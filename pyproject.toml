@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "my-package"
+name = "YellowBanana"
 authors = [
   { name="4Subsea", email="python@4subsea.com" },
 ]
@@ -30,7 +30,7 @@ classifiers = [
 ]
 
 [tool.setuptools.dynamic]
-version = {attr = "my_package.__version__"}
+version = {attr = "YellowBanana.__version__"}
 
 [tool.pytest.ini_options]
 pythonpath = [".", "src"]
