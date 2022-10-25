@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "hello again!"
           echo ""
-          gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release/releases/latest -q ".body" > docs/new_notes.txt
+          gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/latest -q ".body" > docs/new_notes.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
