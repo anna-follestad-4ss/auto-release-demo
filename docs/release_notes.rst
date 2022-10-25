@@ -1,6 +1,22 @@
 Release Notes
 =============
  
+What is new in version v0.1.21 (25 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.21 -->
+
+ 
+## What's Changed
+### Features 🎉
+* Feature to colour things red by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/7
+* New cool feature to colour things blue by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/8
+
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v0.1.20...v0.1.21
+ 
+ 
+ 
 What is new in version v0.1.20 (25 October 2022)
 ------------------------------------------------
  
