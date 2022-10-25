@@ -79,7 +79,7 @@ jobs:
           sed -i "3 i ------------------------------------------------" release_notes.rst
           sed -i '3 i What is new in version ${{ github.ref_name }} (${{ steps.date.outputs.date }})' release_notes.rst
           sed -i "3 i \ " release_notes.rst
-          sed -i "9 i \ " release_notes.rst
+          sed -i '9s/.*/ /' notes.txt
           
           
           
