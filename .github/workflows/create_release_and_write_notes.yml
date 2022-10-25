@@ -20,7 +20,7 @@ jobs:
         run: |
           gh release create ${{ github.ref }} --generate-notes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.access_token }}
           
           
   get-release-notes:
