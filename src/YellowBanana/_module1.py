@@ -19,14 +19,7 @@ def _privatefunction(variable2):
 def function1(variable1):
     """
     New Feature 
-    Lorem ipsum yadiyaasdf
-    dfgdfg
-    somenew feature
-    sdf
-    asdfasdfas
-    dfasd
-    fasdfasdf
-    jhiuhihkj
+
 
     Parameters
     ----------
