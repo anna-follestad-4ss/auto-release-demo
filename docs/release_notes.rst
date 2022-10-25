@@ -1,6 +1,20 @@
 Release Notes
 =============
  
+What is new in version v0.1.16 (25 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.16 -->
+
+## What's Changed
+### Bug fixes
+* Now I am changing the pull request title jut as I am doing the squash and merge.  I'm going to make it really nice and long just to see how long it is possible to make it.  by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/5
+
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v0.1.15...v0.1.16
+ 
+ 
+ 
 What is new in version v0.1.15 (25 October 2022)
 ------------------------------------------------
  
