@@ -4,7 +4,7 @@ on:
     tags:
       - 'v*'
       
-name: v2 Create Release and save notes to file 
+name: Create Release
 
 jobs:
   create-github-release:
