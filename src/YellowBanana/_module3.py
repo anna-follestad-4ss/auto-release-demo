@@ -1,6 +1,7 @@
 class Class1:
     """
     Lorem ipsum yadiyasdfgnb
+    sdf
 
 
     Parameters
