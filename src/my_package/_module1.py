@@ -21,6 +21,7 @@ def function1(variable1):
     """
     Lorem ipsum yadiyaasdf
     dfgdfg
+    somenew feature
 
 
     Parameters
