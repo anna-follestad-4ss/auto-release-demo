@@ -47,10 +47,10 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install bumpversion
           
-    - name: Setup Git
-      run: |
-        git config user.name 'anna-follestad-4ss'
-        git config user.email 'anna.fehn.follestad@4subsea.com'
+    #- name: Setup Git
+    #  run: |
+    #    git config user.name 'anna-follestad-4ss'
+    #    git config user.email 'anna.fehn.follestad@4subsea.com'
     - name: bump version
       run: |
         bumpversion ${{github.event.inputs.version}}  
