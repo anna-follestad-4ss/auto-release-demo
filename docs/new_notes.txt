@@ -1,5 +1,5 @@
-<!-- Release notes generated using configuration in .github/release.yml at v0.1.9 -->
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.11 -->
 
 
 
-**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v0.1.8...v0.1.9
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v0.1.10...v0.1.11
