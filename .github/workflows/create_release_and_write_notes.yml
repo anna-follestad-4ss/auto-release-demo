@@ -19,8 +19,8 @@ jobs:
       - name: Create Release
         run: |
           gh release create ${{ github.ref }} --generate-notes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # env:
+        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
           
   get-release-notes:
@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
+          token: ${{ secrets.access_token }}
         
       - name: Obtain notes and save to file
         run: |
@@ -62,6 +63,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
+          token: ${{ secrets.access_token }}
           
       - name: Get current date
         id: date
