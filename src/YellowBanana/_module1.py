@@ -16,9 +16,35 @@ def _privatefunction(variable2):
     """
     return 0
 
+def function1b(variable1):
+    """
+    New Feature 
+    Lorem ipsum yadiyaasdf
+    dfgdfg
+    somenew feature
+    asdfasdfas
+    dfasd
+    fasdfasdf
+    jhiuhihkj
+
+    Parameters
+    ----------
+    t1: int
+        Some text
+
+    Returns
+    -------
+    int
+        A number
+
+    """
+
+    return 4
+
 
 def function1(variable1):
     """
+    New Feature 
     Lorem ipsum yadiyaasdf
     dfgdfg
     somenew feature
