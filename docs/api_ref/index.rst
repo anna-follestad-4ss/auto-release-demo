@@ -16,7 +16,9 @@ Note: be mindful of spaces/empty lines, changes may make sphinx throw cryptical 
 
 Functions
 ---------
-.. currentmodule:: my_package
+
+.. currentmodule:: YellowBanana
+
 
 .. autosummary::
     :toctree:
