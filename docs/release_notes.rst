@@ -1,6 +1,17 @@
 Release Notes
 =============
  
+What is new in version v0.1.17 (25 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.17 -->
+
+
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v0.1.16...v0.1.17
+ 
+ 
+ 
 What is new in version v0.1.16 (25 October 2022)
 ------------------------------------------------
  
