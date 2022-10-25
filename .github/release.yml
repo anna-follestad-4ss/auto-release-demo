@@ -6,7 +6,8 @@ changelog:
   - title: Features 
     labels:
     - feature
-  - title: Bug fixes 
+    - documentation
+  - title: Bug Fixes
     labels:
     - bug
   - title: Other Changes
