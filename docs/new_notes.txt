@@ -1,5 +1,1 @@
-<!-- Release notes generated using configuration in .github/release.yml at v0.1.51 -->
 
-
-
-**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release/compare/v0.1.50...v0.1.51
