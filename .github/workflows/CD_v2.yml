@@ -1,4 +1,4 @@
-name: CD
+name: CD with release notes 
 
 on:
   push:
@@ -38,7 +38,7 @@ jobs:
           replacement_text="__version__ = \"$VERSION_NUMBER\""
           sed -i "s/$search_pattern/$replacement_text/" "$filename"
           
-     - name: Create Release
+      - name: Create Release
         run: |
           gh release create ${{ $env.VERSION_NUMBER }} --generate-notes
         env:
