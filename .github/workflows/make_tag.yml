@@ -23,7 +23,7 @@ jobs:
         run: |
           ref="${{github.ref}}"
           
-          prefix="refs/tags/make-v"
+          prefix="refs/tags/make-"
           suffix="-test"
           version=${ref#$prefix}
           version=${version%$suffix}
