@@ -1,6 +1,20 @@
 Release Notes
 =============
  
+What is new in version v0.1.27 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.27 -->
+
+ 
+### Bug Fixes
+* This is a bug fix pull request. Let's make this a big shorter.  by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/14
+
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v0.1.26...v0.1.27
+ 
+ 
+ 
 What is new in version v0.1.26 (26 October 2022)
 ------------------------------------------------
  
