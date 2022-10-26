@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
@@ -38,11 +38,11 @@ jobs:
           replacement_text="__version__ = \"$VERSION_NUMBER\""
           sed -i "s/$search_pattern/$replacement_text/" "$filename"
           
-      #- name: Create Release
-      #  run: |
-      #    gh release create ${{ $env.VERSION_NUMBER }} --generate-notes
-      #  env:
-      #    GITHUB_TOKEN: ${{ secrets.access_token }}
+      - name: Create Release
+        run: |
+          gh release create ${{ $env.VERSION_NUMBER }} --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.access_token }}
            
       
       
