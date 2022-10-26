@@ -117,6 +117,17 @@ jobs:
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/v$VERSION_NUMBER"
     
+      - name: Upload documentation to PROD blob storage
+        if: ${{ startswith(github.ref, 'refs/tags/make-') && !endsWith(github.ref, '-test') }}
+        uses: azure/CLI@v1
+        env:
+          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTPROD_DOC_BLOB_CONNSTR }}
+        with:
+          inlineScript: |
+            az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
+            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
+            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/v$VERSION_NUMBER"
+            
       - name: Delete make-release
         run: |
           gh release delete make-${{ env.VERSION_NUMBER }}-test --cleanup-tag -y
