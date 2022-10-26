@@ -89,5 +89,7 @@ jobs:
       - name: Delete make-release
         run: |
           gh release delete ${{github.ref}} --cleanup-tag -y
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
         
