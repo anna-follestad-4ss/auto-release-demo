@@ -38,16 +38,12 @@ jobs:
           replacement_text="__version__ = \"$VERSION_NUMBER\""
           sed -i "s/$search_pattern/$replacement_text/" "$filename"
           
-      - name: Create Release
+      - name: Create Test Release
+        if: ${{ startswith(github.ref, 'refs/tags/make-v') && endsWith(github.ref, '-test') }}
         run: |
-          gh release create ${{ env.VERSION_NUMBER }} --generate-notes
+          gh release create ${{ env.VERSION_NUMBER }}-test --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.access_token }}
-           
-      
-      
-          
-       
           
       - name: Build package
         run: python -m build --sdist --wheel --outdir ./dist
@@ -58,7 +54,7 @@ jobs:
           sphinx-build -b html ./docs ./build/html
           
       - name: Publish package to TestPyPi
-        if: ${{ startswith(github.ref, 'refs/tags/v') && endsWith(github.ref, '-test') }}
+        if: ${{ startswith(github.ref, 'refs/tags/make-v') && endsWith(github.ref, '-test') }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
