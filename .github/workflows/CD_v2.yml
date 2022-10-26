@@ -32,7 +32,7 @@ jobs:
           version=${ref#$prefix}
           version=${version%$suffix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
-          
+  
       - name: Replace package version number
         run: |
           filename="src/YellowBanana/__init__.py"
@@ -128,9 +128,17 @@ jobs:
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/v$VERSION_NUMBER"
             
-      - name: Delete make-release
+      - name: Delete make-release-test
+        if: ${{ startswith(github.ref, 'refs/tags/make-') && endsWith(github.ref, '-test') }}
         run: |
           gh release delete make-${{ env.VERSION_NUMBER }}-test --cleanup-tag -y
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Delete make-release-prod
+        if: ${{ startswith(github.ref, 'refs/tags/make-') && !endsWith(github.ref, '-test') }}
+        run: |
+          gh release delete make-${{ env.VERSION_NUMBER }} --cleanup-tag -y
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
