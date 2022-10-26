@@ -45,6 +45,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.access_token }}
           
+      - name: Create Prod Release
+        if: ${{ startswith(github.ref, 'refs/tags/make-v') && !endsWith(github.ref, '-test') }}
+        run: |
+          gh release create ${{ env.VERSION_NUMBER }} --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.access_token }}
+          
+      # Get release notes 
+      
+
+      
+          
+          
       - name: Build package
         run: python -m build --sdist --wheel --outdir ./dist
 
@@ -72,4 +85,9 @@ jobs:
             az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/v$VERSION_NUMBER"
+    
+      - name: Delete make-release
+        run: |
+          gh release delete ${{github.ref}} --cleanup-tag -y
+          
         
