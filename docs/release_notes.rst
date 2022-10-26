@@ -1,6 +1,17 @@
 Release Notes
 =============
  
+What is new in version make-v2.0.17-test (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/make-v2.0.14-test...v2.0.17-test
+ 
+ 
+ 
 What is new in version v0.1.27 (26 October 2022)
 ------------------------------------------------
  
