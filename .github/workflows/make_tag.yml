@@ -20,6 +20,16 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.access_token }}
+          
+      - name: Get new version number from tag
+        run: |
+          ref="${{github.ref}}"
+          prefix="refs/tags/make-v"
+          suffix="-test"
+          version=${ref#$prefix}
+          version=${version%$suffix}
+          echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
+          
 
       - name: Create tag
         uses: actions/github-script@v5
@@ -28,7 +38,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/heisann',
+              ref: 'refs/tags/${{env.VERSION_NUMBER}}',
               sha: context.sha
             })
             
