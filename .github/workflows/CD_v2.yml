@@ -32,6 +32,7 @@ jobs:
           version=${ref#$prefix}
           version=${version%$suffix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
+          echo ${{ env.VERSION_NUMBER }}
   
       - name: Replace package version number
         run: |
