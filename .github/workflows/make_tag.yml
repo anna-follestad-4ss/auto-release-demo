@@ -2,9 +2,11 @@
 name: Make a new tag
 
 on:
-  push:
-    tags:
-      - 'make-*'
+  workflow_dispatch:
+    
+  #push:
+  #  tags:
+  #    - 'make-*'
 
   
 
