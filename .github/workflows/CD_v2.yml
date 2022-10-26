@@ -115,7 +115,7 @@ jobs:
           inlineScript: |
             az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/v$VERSION_NUMBER"
+            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/$VERSION_NUMBER"
     
       - name: Upload documentation to PROD blob storage
         if: ${{ startswith(github.ref, 'refs/tags/make-') && !endsWith(github.ref, '-test') }}
@@ -126,7 +126,7 @@ jobs:
           inlineScript: |
             az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/v$VERSION_NUMBER"
+            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/$VERSION_NUMBER"
             
       - name: Delete make-release-test
         if: ${{ startswith(github.ref, 'refs/tags/make-') && endsWith(github.ref, '-test') }}
