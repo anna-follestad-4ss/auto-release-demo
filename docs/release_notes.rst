@@ -1,6 +1,13 @@
 Release Notes
 =============
  
+What is new in version make-v2.0.20 (26 October 2022)
+------------------------------------------------
+ 
+
+ 
+ 
+ 
 What is new in version make-v2.0.20-test (26 October 2022)
 ------------------------------------------------
  
