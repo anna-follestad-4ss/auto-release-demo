@@ -11,26 +11,26 @@ on:
   
 
 
-  jobs:
-    make-a-tag:
-      name: Make new tag
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
-          with:
-            token: ${{ secrets.access_token }}
+jobs:
+  make-a-tag:
+    name: Make new tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.access_token }}
 
-        - name: Create tag
-          uses: actions/github-script@v5
-          with:
-            script: |
-              github.rest.git.createRef({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: 'refs/tags/heisann',
-                sha: context.sha
-              })
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/heisann',
+              sha: context.sha
+            })
             
           
           
