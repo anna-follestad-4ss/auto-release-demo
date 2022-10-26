@@ -40,7 +40,7 @@ jobs:
           
       - name: Create Release
         run: |
-          gh release create ${{ $env.VERSION_NUMBER }} --generate-notes
+          gh release create ${{ env.VERSION_NUMBER }} --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.access_token }}
            
