@@ -53,9 +53,38 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.access_token }}
           
       # Get release notes 
+      - name: Obtain notes and save to file
+        run: |
+          gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/latest -q ".body" > docs/new_notes.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-
-      
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%d %B %Y')"
+          
+      - name: ubuntu text adder
+        run: |
+          cd docs
+          sed -i "3 i \ " release_notes.rst
+          sed -i "3 i \ " release_notes.rst
+          sed -i "3 i \ " release_notes.rst
+          sed -i '3 r new_notes.txt' release_notes.rst
+          sed -i "3 i ------------------------------------------------" release_notes.rst
+          sed -i '3 i What is new in version ${{ github.ref_name }} (${{ steps.date.outputs.date }})' release_notes.rst
+          sed -i "3 i \ " release_notes.rst
+          sed -i '9s/.*/ /' release_notes.rst
+          
+      - name: Setup Git
+        run: |
+          git config user.name 'anna-follestad-4ss'
+          git config user.email 'anna.fehn.follestad@4subsea.com'
+        
+      - name: Push latest version
+        run: |
+          git add docs/release_notes.rst
+          git commit -m "added latest release notes from autogen"
+          git push origin main
           
           
       - name: Build package
