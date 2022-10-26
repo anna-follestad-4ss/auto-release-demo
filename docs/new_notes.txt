@@ -1,5 +1,10 @@
-<!-- Release notes generated using configuration in .github/release.yml at v0.1.25 -->
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.26 -->
+
+## What's Changed
+### Features 🎉
+* This is a new feature by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/12
+### Bug Fixes
+* This is a bug fix by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/11
 
 
-
-**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v0.1.24...v0.1.25
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v0.1.25...v0.1.26
