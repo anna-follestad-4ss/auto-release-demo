@@ -1,6 +1,20 @@
 Release Notes
 =============
  
+What is new in version v2.0.45 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+### Features 🎉
+* This is the pull request title. It can be very long if we want it to be. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium auctor vehicula. Maecenas purus orci, fermentum ac facilisis et, vehicula eu tellus. Maecenas pretium nisl dui, vel efficitur purus finibus sollicitudin. Vestibulum sit amet nibh et eros consequat facilisis pretium vel diam. Nullam aliquam laoreet nisi. Aenean eget iaculis turpis. Maecenas aliquet tellus dolor. In vulputate, metus commodo scelerisque malesuada, nibh libero hendrerit sapien, a malesuada odio nulla sit amet enim. Vestibulum sapien lorem, lacinia at feugiat id, fringilla eget tellus. Phasellus eleifend luctus convallis. Mauris vel massa vitae nunc egestas luctus eu eu arcu. Pellentesque at efficitur risus. Aenean. by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/13
+
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.42...v2.0.45
+ 
+ 
+ 
 What is new in version v2.0.42 (27 October 2022)
 ------------------------------------------------
  
