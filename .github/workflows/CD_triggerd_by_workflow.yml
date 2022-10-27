@@ -44,7 +44,9 @@ jobs:
           echo "1"
           echo $(git describe --tags --abbrev=0)
           echo "2"
+          
           echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+          echo "$GITHUB_ENV"
           
           ref="${{github.ref}}"
           prefix="refs/tags/v"
