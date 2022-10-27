@@ -32,15 +32,18 @@ jobs:
           prefix="refs/tags/make-"
           # suffix="-test"
           version=${ref#$prefix}
-          # version=${version%$suffix}
+          version_pep440=${version%$suffix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
+          echo "VERSION_NUMBER_PEP440=$version_pep440" >> $GITHUB_ENV
+          
           echo "${{ env.VERSION_NUMBER }}"
+          echo "${{ env.VERSION_NUMBER_PEP440 }}"
   
       - name: Replace package version number
         run: |
           filename="src/YellowBanana/__init__.py"
           search_pattern="__version__ = \"0.0.1\""
-          replacement_text="__version__ = \"$VERSION_NUMBER\""
+          replacement_text="__version__ = \"$VERSION_NUMBER_PEP440\""
           sed -i "s/$search_pattern/$replacement_text/" "$filename"
           
       - name: Draft Release
