@@ -87,13 +87,12 @@ jobs:
           git config user.name 'anna-follestad-4ss'
           git config user.email 'anna.fehn.follestad@4subsea.com'
         
-      - name: Push latest version
+      - name: Push latest version to tag
         run: |
           git add docs/release_notes.rst
-          git add docs/new_notes.txt
           git commit -m "added latest release notes from autogen"
-          git push origin main
-          
+          #git push origin main
+          git push origin ${{ env.VERSION_NUMBER  }}
           
       - name: Build package
         run: python -m build --sdist --wheel --outdir ./dist
