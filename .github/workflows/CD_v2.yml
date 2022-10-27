@@ -43,14 +43,14 @@ jobs:
           replacement_text="__version__ = \"$VERSION_NUMBER\""
           sed -i "s/$search_pattern/$replacement_text/" "$filename"
           
-      - name: Create Test Release
+      - name: Draft Test Release
         if: ${{ startswith(github.ref, 'refs/tags/make-v') && endsWith(github.ref, '-test') }}
         run: |
           gh release create ${{ env.VERSION_NUMBER }}-test --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.access_token }}
           
-      - name: Create Prod Release
+      - name: Draft Prod Release
         if: ${{ startswith(github.ref, 'refs/tags/make-v') && !endsWith(github.ref, '-test') }}
         run: |
           echo "$VERSION_NUMBER"
@@ -102,6 +102,16 @@ jobs:
           git push origin :refs/tags/${{ env.VERSION_NUMBER  }}
           git tag ${{ env.VERSION_NUMBER  }}
           git push --tags
+        
+      - name: Publish drafted prod  release
+        if: ${{ startswith(github.ref, 'refs/tags/make-v') && !endsWith(github.ref, '-test') }}
+        run: |
+          gh release edit ${{ env.VERSION_NUMBER  }} --draft=False
+        env:
+          GITHUB_TOKEN: ${{ secrets.access_token }}
+ 
+      # Publish drafted test release 
+          
           
       #- name: Build package
       #  run: python -m build --sdist --wheel --outdir ./dist
