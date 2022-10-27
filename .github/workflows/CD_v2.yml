@@ -1,11 +1,12 @@
-name: CD with release notes 
+name: CD with release notes this is a backup of the version that works. 
+
 
 on:
-  #workflow_dispatch:
+  workflow_dispatch:
   
-  push:
-    tags:
-      - 'make-*'
+  #push:
+  #  tags:
+  #    - 'make-*'
 
 jobs:
   deploy:
