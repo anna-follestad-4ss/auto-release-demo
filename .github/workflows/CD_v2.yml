@@ -141,9 +141,9 @@ jobs:
       #      az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/$VERSION_NUMBER"
             
       - name: Delete make-release
-        if: ${{ startswith(github.ref, 'refs/tags/make-') && endsWith(github.ref, '-test') }}
+        # if: ${{ startswith(github.ref, 'refs/tags/make-') && endsWith(github.ref, '-test') }}
         run: |
-          gh release delete make-${{ env.VERSION_NUMBER }}-test --cleanup-tag -y
+          gh release delete make-${{ env.VERSION_NUMBER }} --cleanup-tag -y
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
