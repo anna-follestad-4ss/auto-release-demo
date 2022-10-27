@@ -30,9 +30,9 @@ jobs:
         run: |
           ref="${{github.ref}}"
           prefix="refs/tags/make-"
-          suffix="-test"
+          # suffix="-test"
           version=${ref#$prefix}
-          version=${version%$suffix}
+          # version=${version%$suffix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
           echo "${{ env.VERSION_NUMBER }}"
   
@@ -43,18 +43,9 @@ jobs:
           replacement_text="__version__ = \"$VERSION_NUMBER\""
           sed -i "s/$search_pattern/$replacement_text/" "$filename"
           
-      - name: Draft Test Release
-        if: ${{ startswith(github.ref, 'refs/tags/make-v') && endsWith(github.ref, '-test') }}
+      - name: Draft Release
         run: |
-          gh release create ${{ env.VERSION_NUMBER }}-test --generate-notes
-        env:
-          GITHUB_TOKEN: ${{ secrets.access_token }}
-          
-      - name: Draft Prod Release
-        if: ${{ startswith(github.ref, 'refs/tags/make-v') && !endsWith(github.ref, '-test') }}
-        run: |
-          echo "$VERSION_NUMBER"
-          gh release create ${{ env.VERSION_NUMBER }} --generate-notes
+          gh release create ${{ env.VERSION_NUMBER }} --generate-notes --draft
         env:
           GITHUB_TOKEN: ${{ secrets.access_token }}
           
@@ -102,20 +93,13 @@ jobs:
           git tag ${{ env.VERSION_NUMBER  }}
           git push --tags
         
-      - name: Publish drafted prod release
+      - name: Publish drafted release
         if: ${{ startswith(github.ref, 'refs/tags/make-v') && !endsWith(github.ref, '-test') }}
         run: |
           gh release edit ${{ env.VERSION_NUMBER  }} --draft=False
         env:
           GITHUB_TOKEN: ${{ secrets.access_token }}
 
-      - name: Publish drafted test release
-        if: ${{ startswith(github.ref, 'refs/tags/make-v') && endsWith(github.ref, '-test') }}
-        run: |
-          gh release edit ${{ env.VERSION_NUMBER  }}-test --draft=False
-        env:
-          GITHUB_TOKEN: ${{ secrets.access_token }}
-          
           
       #- name: Build package
       #  run: python -m build --sdist --wheel --outdir ./dist
@@ -156,19 +140,13 @@ jobs:
       #      az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
       #      az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/$VERSION_NUMBER"
             
-      - name: Delete make-release-test
+      - name: Delete make-release
         if: ${{ startswith(github.ref, 'refs/tags/make-') && endsWith(github.ref, '-test') }}
         run: |
           gh release delete make-${{ env.VERSION_NUMBER }}-test --cleanup-tag -y
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Delete make-release-prod
-        if: ${{ startswith(github.ref, 'refs/tags/make-') && !endsWith(github.ref, '-test') }}
-        run: |
-          gh release delete make-${{ env.VERSION_NUMBER }} --cleanup-tag -y
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
           
           
         
