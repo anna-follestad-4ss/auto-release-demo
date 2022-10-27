@@ -30,10 +30,19 @@ jobs:
       #    gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/tags/latest -q ".body" > docs/new_notes.txt
       #  env:
       #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      
+      
       - name: set up env var
         run: echo "TAG=$(echo git describe --exact-match --tags $(git log -n1 --pretty='%h'))" >> $GITHUB_ENV
       - name: use env var
         run: echo ${{ env.TAG }}
+        
+      - name: set up env var
+        run: echo "TAGG=$(echo git describe --exact-match --tags)" >> $GITHUB_ENV
+      - name: use env var
+        run: echo ${{ env.TAGG }}
+        
     
     
       - name: Get new version number from tag
