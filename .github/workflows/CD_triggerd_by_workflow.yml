@@ -40,32 +40,34 @@ jobs:
           version=${version%$suffix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
           echo "$GIT_TAG"
-
-      - name: Build package
-        run: python -m build --sdist --wheel --outdir ./dist
-
-      - name: Build documentation
-        run:  |
-          pip install .
-          sphinx-build -b html ./docs ./build/html
-
-      - name: Publish package to TestPyPi
-        # if: ${{ startswith(github.ref, 'refs/tags/v') && endsWith(github.ref, '-test') }}
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_TEST_API_KEY }}
-          repository_url: https://test.pypi.org/legacy/
-      
-      - name: Upload documentation to TEST blob storage
-        # if: ${{ startswith(github.ref, 'refs/tags/v') && endsWith(github.ref, '-test') }}
-        uses: azure/CLI@v1
         env:
-          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTTEST_DOC_BLOB_CONNSTR }}
-        with:
-          inlineScript: |
-            az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/v$VERSION_NUMBER"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      #- name: Build package
+      #  run: python -m build --sdist --wheel --outdir ./dist
+
+      #- name: Build documentation
+      #  run:  |
+      #    pip install .
+      #    sphinx-build -b html ./docs ./build/html
+
+      #- name: Publish package to TestPyPi
+      #  # if: ${{ startswith(github.ref, 'refs/tags/v') && endsWith(github.ref, '-test') }}
+      #  uses: pypa/gh-action-pypi-publish@release/v1
+      #  with:
+      #    user: __token__
+      #    password: ${{ secrets.PYPI_TEST_API_KEY }}
+      #    repository_url: https://test.pypi.org/legacy/
+      
+      #- name: Upload documentation to TEST blob storage
+      #  # if: ${{ startswith(github.ref, 'refs/tags/v') && endsWith(github.ref, '-test') }}
+      #  uses: azure/CLI@v1
+      #  env:
+      #    AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTTEST_DOC_BLOB_CONNSTR }}
+      #  with:
+      #    inlineScript: |
+      #      az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
+      #      az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
+      #      az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/v$VERSION_NUMBER"
         
      
