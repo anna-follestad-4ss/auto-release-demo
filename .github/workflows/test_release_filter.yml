@@ -1,0 +1,15 @@
+name: CD with release notes this is a backup of the version that works. 
+
+
+on:
+  release:
+    -'b*'
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: main
