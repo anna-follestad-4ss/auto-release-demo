@@ -87,12 +87,7 @@ jobs:
           
 
         
-      - name: Publish drafted release
-        # if: ${{ startswith(github.ref, 'refs/tags/make-v') && !endsWith(github.ref, '-test') }}
-        run: |
-          gh release edit ${{ env.VERSION_NUMBER  }} --draft=False
-        env:
-          GITHUB_TOKEN: ${{ secrets.access_token }}
+
 
           
       #- name: Build package
@@ -149,6 +144,12 @@ jobs:
           
           git tag ${{ env.VERSION_NUMBER  }}
           git push --tags
+      
+      - name: Publish drafted release
+        run: |
+          gh release edit ${{ env.VERSION_NUMBER  }} --draft=False
+        env:
+          GITHUB_TOKEN: ${{ secrets.access_token }}
 
           
           
