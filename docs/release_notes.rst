@@ -1,6 +1,258 @@
 Release Notes
 =============
  
+What is new in version v2.0.42 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.34...v2.0.42
+ 
+ 
+ 
+What is new in version v2.0.25 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.24...v2.0.25
+ 
+ 
+ 
+What is new in version v2.0.34 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.33...v2.0.34
+ 
+ 
+ 
+What is new in version v2.0.33 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.31...v2.0.33
+ 
+ 
+ 
+What is new in version v2.0.32 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.31...v2.0.32
+ 
+ 
+ 
+What is new in version v2.0.31 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.30...v2.0.31
+ 
+ 
+ 
+What is new in version v2.0.30 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.29...v2.0.30
+ 
+ 
+ 
+What is new in version v2.0.29 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.27...v2.0.29
+ 
+ 
+ 
+What is new in version make-v2.0.28 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.26...v2.0.28
+ 
+ 
+ 
+What is new in version make-v2.0.26 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.25...v2.0.26
+ 
+ 
+ 
+What is new in version make-v2.0.25 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.24...v2.0.25
+ 
+ 
+ 
+What is new in version make-v2.0.24 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.23...v2.0.24
+ 
+ 
+ 
+What is new in version make-v2.0.23 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.22...v2.0.23
+ 
+ 
+ 
+What is new in version make-v2.0.22 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.21...v2.0.22
+ 
+ 
+ 
+What is new in version make-v2.0.21 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.20...v2.0.21
+ 
+ 
+ 
+What is new in version make-v2.0.21-test (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.20...v2.0.21-test
+ 
+ 
+ 
+What is new in version make-v2.0.20 (26 October 2022)
+------------------------------------------------
+ 
+
+ 
+ 
+ 
+What is new in version make-v2.0.20-test (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.19...v2.0.20-test
+ 
+ 
+ 
+What is new in version make-v2.0.19 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.18...v2.0.19
+ 
+ 
+ 
+What is new in version make-v2.0.18 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.17...v2.0.18
+ 
+ 
+ 
+What is new in version make-v2.0.17 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.10...v2.0.17
+ 
+ 
+ 
+What is new in version make-v2.0.17-test (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/make-v2.0.14-test...v2.0.17-test
+ 
+ 
+ 
+What is new in version v0.1.27 (26 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.27 -->
+
+ 
+### Bug Fixes
+* This is a bug fix pull request. Let's make this a big shorter.  by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/14
+
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v0.1.26...v0.1.27
+ 
+ 
+ 
 What is new in version v0.1.26 (26 October 2022)
 ------------------------------------------------
  
