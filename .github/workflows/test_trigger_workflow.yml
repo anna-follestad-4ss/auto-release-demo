@@ -2,8 +2,10 @@ name: CD with release notes this is a backup of the version that works.
 
 
 on:
-  release:
-    -'b*'
+  workflow_run:
+    workflows: [preCD]
+    types:
+      - completed
   
 jobs:
   deploy:
