@@ -2,9 +2,8 @@ name: CD - orig. triggered by preCD
 
 
 on:
-  push:
-    tags:
-      -'v*'
+  workflow_dispatch:
+  
   
 
 jobs:
@@ -26,6 +25,7 @@ jobs:
 
       - name: Get new version number from tag
         run: |
+          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
           
           ref="${{github.ref}}"
           prefix="refs/tags/v"
@@ -33,7 +33,7 @@ jobs:
           version=${ref#$prefix}
           version=${version%$suffix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
-          echo "$VERSION_NUMBER"
+          echo "$GIT_TAG"
 
       - name: Build package
         run: python -m build --sdist --wheel --outdir ./dist
