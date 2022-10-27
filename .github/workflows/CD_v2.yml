@@ -95,8 +95,8 @@ jobs:
           
       - name: Move tag
         run: |
-          git tag -d ${{ env.VERSION_NUMBER  }}
-          git push origin :refs/tags/${{ env.VERSION_NUMBER  }}
+          #git tag -d ${{ env.VERSION_NUMBER  }}
+          #git push origin :refs/tags/${{ env.VERSION_NUMBER  }}
           git tag ${{ env.VERSION_NUMBER  }}
           git push --tags
           
