@@ -4,7 +4,7 @@ name: CD - orig. triggered by preCD
 on:
   push:
     tags:
-      -'*'
+  
       
 
 jobs:
