@@ -42,6 +42,7 @@ jobs:
           
           git fetch -a
           echo "1"
+          echo $(git describe --tags --abbrev=0) 
           echo "VERSION_TAG=$(git describe --tags --abbrev=0)"  >> $GITHUB_ENV 
           echo "2"
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV 
