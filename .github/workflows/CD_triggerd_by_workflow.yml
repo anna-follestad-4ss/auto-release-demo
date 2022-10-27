@@ -2,16 +2,17 @@ name: CD - orig. triggered by preCD
 
 
 on:
-  push:
-    tags:
-  
+  workflow_dispatch:
+    
       
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
@@ -33,15 +34,15 @@ jobs:
       - name: Get new version number from tag
         run: |
         
-          echo "1"
-          echo $(gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/tags/latest )
-          echo "2"
+          #echo "1"
+          #echo $(gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/tags/latest )
+          #echo "2"
+          #echo "GIT_TAG= `echo $(gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/tags/latest -q ".body")`" >> $GITHUB_ENV
           
-          echo "GIT_TAG= `echo $(gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/tags/latest -q ".body")`" >> $GITHUB_ENV
           
-          
-          #  git fetch -a
-          # echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+          git fetch -a
+          echo $(git describe --tags --abbrev=0)
+          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
           
           ref="${{github.ref}}"
           prefix="refs/tags/v"
