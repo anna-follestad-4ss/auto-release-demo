@@ -1,9 +1,11 @@
 name: CD with release notes 
 
 on:
-  push:
-    tags:
-      - 'make-*'
+  workflow_dispatch:
+  
+  #push:
+  #  tags:
+  #    - 'make-*'
 
 jobs:
   deploy:
