@@ -1,6 +1,22 @@
 Release Notes
 =============
  
+What is new in version v2.0.50 (27 October 2022)
+------------------------------------------------
+ 
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+ 
+### Features 🎉
+* feat: added a feature by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/15
+### Bug Fixes
+* fix: fix a bug  by @anna-follestad-4ss in https://github.com/anna-follestad-4ss/auto-release-demo/pull/16
+
+
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.49...v2.0.50
+ 
+ 
+ 
 What is new in version v2.0.49 (27 October 2022)
 ------------------------------------------------
  
