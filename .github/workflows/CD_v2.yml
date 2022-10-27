@@ -1,11 +1,11 @@
 name: CD with release notes 
 
 on:
-  workflow_dispatch:
+  #workflow_dispatch:
   
-  #push:
-  #  tags:
-  #    - 'make-*'
+  push:
+    tags:
+      - 'make-*'
 
 jobs:
   deploy:
@@ -78,7 +78,7 @@ jobs:
           sed -i "3 i \ " release_notes.rst
           sed -i '3 r new_notes.txt' release_notes.rst
           sed -i "3 i ------------------------------------------------" release_notes.rst
-          sed -i '3 i What is new in version ${{ github.ref_name }} (${{ steps.date.outputs.date }})' release_notes.rst
+          sed -i '3 i What is new in version ${{ env.VERSION_NUMBER  }} (${{ steps.date.outputs.date }})' release_notes.rst
           sed -i "3 i \ " release_notes.rst
           sed -i '9s/.*/ /' release_notes.rst
           
