@@ -25,8 +25,13 @@ jobs:
 
       - name: Get new version number from tag
         run: |
-          git fetch -a
-          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+        
+
+          echo "GIT_TAG= `echo $(gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/tags/latest -q ".body")`" >> $GITHUB_ENV
+          
+          
+          #  git fetch -a
+          # echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
           
           ref="${{github.ref}}"
           prefix="refs/tags/v"
