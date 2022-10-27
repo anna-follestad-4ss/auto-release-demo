@@ -3,9 +3,9 @@ name: CD with release notes
 on:
   #workflow_dispatch:
   
-  push:
-    tags:
-      - 'make-*'
+  #push:
+  #  tags:
+  #    - 'make-*' && '*-test'
 
 jobs:
   deploy:
