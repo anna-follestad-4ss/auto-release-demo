@@ -51,6 +51,7 @@ jobs:
       - name: Create Prod Release
         if: ${{ startswith(github.ref, 'refs/tags/make-v') && !endsWith(github.ref, '-test') }}
         run: |
+          echo "$VERSION_NUMBER"
           gh release create ${{ env.VERSION_NUMBER }} --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.access_token }}
@@ -58,6 +59,7 @@ jobs:
       # Get release notes 
       - name: Obtain notes and save to file
         run: |
+          echo "$VERSION_NUMBER"
           gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/tags/${{ env.VERSION_NUMBER }} -q ".body" > docs/new_notes.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -86,6 +88,7 @@ jobs:
       - name: Push latest version
         run: |
           git add docs/release_notes.rst
+          git add docs/new_notes.txt
           git commit -m "added latest release notes from autogen"
           git push origin main
           
