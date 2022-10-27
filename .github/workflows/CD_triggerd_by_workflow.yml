@@ -45,7 +45,7 @@ jobs:
           echo "VERSION_TAG=$(git describe --tags --abbrev=0)"  >> $GITHUB_ENV 
           echo "2"
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV 
-          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+          #echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
           echo "$GITHUB_ENV"
           
           ref="${{github.ref}}"
@@ -55,7 +55,8 @@ jobs:
           version=${version%$suffix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
           echo "3"
-          echo ${{ env.GIT_TAG }}
+          
+          echo ${{ env.VERSION_TAG}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
