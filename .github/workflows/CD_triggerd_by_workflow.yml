@@ -2,9 +2,10 @@ name: CD - orig. triggered by preCD
 
 
 on:
-  workflow_dispatch:
-  
-  
+  push:
+    tags:
+      -'!make-*'
+      
 
 jobs:
   deploy:
