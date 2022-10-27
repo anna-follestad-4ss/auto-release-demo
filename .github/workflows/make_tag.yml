@@ -30,7 +30,7 @@ jobs:
           version=${ref#$prefix}
           version=${version%$suffix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
-          echo "$env.VERSION_NUMBER"
+          echo "$GITHUB_ENV"
           echo "hei"
           
 
@@ -41,7 +41,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/${{env.VERSION_NUMBER}}-6',
+              ref: 'refs/tags/${{env.VERSION_NUMBER}}-7',
               sha: context.sha
             })
             
