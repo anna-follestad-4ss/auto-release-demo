@@ -85,13 +85,7 @@ jobs:
           git commit -m "added latest release notes from autogen"
           git push origin main
           
-      - name: Move tag to include latest commit
-        run: |
-          git pull          
-          git tag -d ${{ env.VERSION_NUMBER  }}
-          git push origin :refs/tags/${{ env.VERSION_NUMBER  }}
-          git tag ${{ env.VERSION_NUMBER  }}
-          git push --tags
+
         
       - name: Publish drafted release
         # if: ${{ startswith(github.ref, 'refs/tags/make-v') && !endsWith(github.ref, '-test') }}
@@ -146,6 +140,15 @@ jobs:
           gh release delete make-${{ env.VERSION_NUMBER }} --cleanup-tag -y
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+      - name: Move tag to include latest commit
+        run: |
+          git pull          
+          git tag -d ${{ env.VERSION_NUMBER  }}
+          git push origin :refs/tags/${{ env.VERSION_NUMBER  }}
+          
+          git tag ${{ env.VERSION_NUMBER  }}
+          git push --tags
 
           
           
