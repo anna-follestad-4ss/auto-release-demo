@@ -51,6 +51,15 @@ jobs:
           #echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
           echo "$GITHUB_ENV"
           
+          echo "Start from scratch"
+          ref = $(git describe --tags --abbrev=0) 
+          echo $ref
+          echo "Ferdig"
+          
+          
+          
+          echo "NAME=VALUE" >> $GITHUB_ENV
+          
           ref="${{github.ref}}"
           prefix="refs/tags/v"
           suffix="-test"
