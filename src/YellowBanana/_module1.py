@@ -45,6 +45,7 @@ def function2(variable2):
     """
     Lorem ipsum yadiyadfg
     vdfg
+    fix a bug
 
     Parameters
     ----------
