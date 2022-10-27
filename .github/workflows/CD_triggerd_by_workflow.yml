@@ -52,7 +52,7 @@ jobs:
           echo "$GITHUB_ENV"
           
           echo "Start from scratch"
-          ref = (git describe --tags --abbrev=0) 
+          ref = echo $(git describe --tags --abbrev=0) 
           echo $ref
           echo "Ferdig"
           
