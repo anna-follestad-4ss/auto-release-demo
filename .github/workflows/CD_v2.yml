@@ -30,7 +30,7 @@ jobs:
         run: |
           ref="${{github.ref}}"
           prefix="refs/tags/make-"
-          # suffix="-test"
+          suffix="-test"
           version=${ref#$prefix}
           version_pep440=${version%$suffix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
