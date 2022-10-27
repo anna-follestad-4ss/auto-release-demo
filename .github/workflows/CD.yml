@@ -1,9 +1,11 @@
 name: CD
 
 on:
-  workflow_dispatch:
+  # workflow_dispatch:
   
-  #release:
+  release:
+    tags: 
+      - 'v*'
   #  types: [created]
 
 jobs:
