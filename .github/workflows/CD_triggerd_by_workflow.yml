@@ -1,11 +1,10 @@
-name: CD with release notes this is a backup of the version that works. 
+name: CD - orig. triggered by preCD 
 
 
 on:
-  workflow_run:
-    workflows: [preCD]
-    types:
-      - completed
+  push:
+    tags:
+      -'v*'
   
 
 jobs:
@@ -24,8 +23,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install build sphinx pydata_sphinx_theme
 
+
       - name: Get new version number from tag
         run: |
+          
           ref="${{github.ref}}"
           prefix="refs/tags/v"
           suffix="-test"
