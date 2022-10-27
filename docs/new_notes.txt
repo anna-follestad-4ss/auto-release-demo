@@ -2,4 +2,4 @@
 
 
 
-**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.27...v2.0.29
+**Full Changelog**: https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.29...v2.0.30
