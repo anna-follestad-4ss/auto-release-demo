@@ -87,51 +87,57 @@ jobs:
           git config user.name 'anna-follestad-4ss'
           git config user.email 'anna.fehn.follestad@4subsea.com'
         
-      - name: Push latest version to tag
+      - name: Push latest version to main
         run: |
           git add docs/release_notes.rst
           git commit -m "added latest release notes from autogen"
-          #git push origin main
-          git push origin ${{ env.VERSION_NUMBER  }}
+          git push origin main
           
-      - name: Build package
-        run: python -m build --sdist --wheel --outdir ./dist
-
-      - name: Build documentation
-        run:  |
-          pip install .
-          sphinx-build -b html ./docs ./build/html
+      - name: Move tag
+        run: |
+          git tag -d ${{ env.VERSION_NUMBER  }}
+          git push origin :refs/tags/${{ env.VERSION_NUMBER  }}
+          git tag ${{ env.VERSION_NUMBER  }}
+          git push --tags
           
-      - name: Publish package to TestPyPi
-        if: ${{ startswith(github.ref, 'refs/tags/make-v') && endsWith(github.ref, '-test') }}
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_TEST_API_KEY }}
-          repository_url: https://test.pypi.org/legacy/
+      #- name: Build package
+      #  run: python -m build --sdist --wheel --outdir ./dist
+
+      #- name: Build documentation
+      #  run:  |
+      #    pip install .
+      #    sphinx-build -b html ./docs ./build/html
+          
+      #- name: Publish package to TestPyPi
+      #  if: ${{ startswith(github.ref, 'refs/tags/make-v') && endsWith(github.ref, '-test') }}
+      #  uses: pypa/gh-action-pypi-publish@release/v1
+      #  with:
+      #    user: __token__
+      #    password: ${{ secrets.PYPI_TEST_API_KEY }}
+      #    repository_url: https://test.pypi.org/legacy/
 
 
-      - name: Upload documentation to TEST blob storage
-        if: ${{ startswith(github.ref, 'refs/tags/make-') && endsWith(github.ref, '-test') }}
-        uses: azure/CLI@v1
-        env:
-          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTTEST_DOC_BLOB_CONNSTR }}
-        with:
-          inlineScript: |
-            az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/$VERSION_NUMBER"
+      #- name: Upload documentation to TEST blob storage
+      #  if: ${{ startswith(github.ref, 'refs/tags/make-') && endsWith(github.ref, '-test') }}
+      #  uses: azure/CLI@v1
+      #  env:
+       #   AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTTEST_DOC_BLOB_CONNSTR }}
+       # with:
+       #   inlineScript: |
+       #     az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
+       #     az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
+       #     az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/$VERSION_NUMBER"
     
-      - name: Upload documentation to PROD blob storage
-        if: ${{ startswith(github.ref, 'refs/tags/make-') && !endsWith(github.ref, '-test') }}
-        uses: azure/CLI@v1
-        env:
-          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTPROD_DOC_BLOB_CONNSTR }}
-        with:
-          inlineScript: |
-            az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/$VERSION_NUMBER"
+      #- name: Upload documentation to PROD blob storage
+      #  if: ${{ startswith(github.ref, 'refs/tags/make-') && !endsWith(github.ref, '-test') }}
+      #  uses: azure/CLI@v1
+      #  env:
+      #    AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTPROD_DOC_BLOB_CONNSTR }}
+      #  with:
+      #    inlineScript: |
+      #      az storage blob delete-batch -s "\$web" --pattern "yellowbanana/python/docs/latest/*"
+      #      az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
+      #      az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/$VERSION_NUMBER"
             
       - name: Delete make-release-test
         if: ${{ startswith(github.ref, 'refs/tags/make-') && endsWith(github.ref, '-test') }}
@@ -146,5 +152,6 @@ jobs:
           gh release delete make-${{ env.VERSION_NUMBER }} --cleanup-tag -y
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
           
         
