@@ -46,20 +46,14 @@ jobs:
           echo ver_no
           echo ${ver_no#"v"}
           echo "hei"
-          
-          
-          #ver_no = ${{ env.VERSION_NO }}
-          #echo ${ver_no#"v"}
-          echo ${${{ env.VERSION_NO }}#"v"}
-
-
-
         
       - name: Replace package version number
         run: |
+          git_tag=${{ env.VERSION_NO }}
+          ver_no=${git_tag#"v"}
           filename="src/YellowBanana/__init__.py"
           search_pattern="__version__ = \"0.0.1\""
-          replacement_text="__version__ = \"${{ env.VERSION_NO }}\""
+          replacement_text="__version__ = \"ver_no\""
           echo replacement_text
           echo "2"
           echo $replacement_text
