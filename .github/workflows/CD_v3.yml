@@ -2,10 +2,11 @@ name: CD - triggered by preCD
 
 
 on:
-  workflow_run:
-    workflows: [preCD]
-    types:
-      - completed
+  workflow_dispatch:
+  #workflow_run:
+  #  workflows: [preCD]
+  #  types:
+  #    - completed
     
 
 jobs:
@@ -30,19 +31,19 @@ jobs:
       - name: Get new version number from tag
         run: |
           git fetch -a
-          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+          echo "VERSION_NO=`echo ${(git describe --tags --abbrev=0)#"v"`" >> $GITHUB_ENV
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: use env var
-        run: echo ${{ env.GIT_TAG }}
+        run: echo ${{ env.VERSION_NO }}
         
       - name: Replace package version number
         run: |
           filename="src/YellowBanana/__init__.py"
           search_pattern="__version__ = \"0.0.1\""
-          replacement_text="__version__ = \"${{ env.GIT_TAG }}\""
+          replacement_text="__version__ = \"${{ env.VERSION_NO }}\""
           echo replacement_text
           echo "2"
           echo $replacement_text
