@@ -2,9 +2,8 @@ name: CD - triggered by preCD
 
 
 on:
-  workflow_dispatch:
+  workflow_run:
     
-      
 
 jobs:
   deploy:
@@ -22,16 +21,7 @@ jobs:
       #- name: Install dependencies
       #  run: |
       #    python -m pip install --upgrade pip
-      #    python -m pip install build sphinx pydata_sphinx_theme
-
-      #- name: Obtain notes and save to file
-      #  run: |
-      #    echo "$VERSION_NUMBER"
-      #    gh api -H "Accept: application/vnd.github+json" /repos/anna-follestad-4ss/auto-release-demo/releases/tags/latest -q ".body" > docs/new_notes.txt
-      #  env:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
- 
-        
+      #    python -m pip install build sphinx pydata_sphinx_theme       
     
     
       - name: Get new version number from tag
@@ -44,6 +34,19 @@ jobs:
 
       - name: use env var
         run: echo ${{ env.GIT_TAG }}
+        
+      - name: Replace package version number
+        run: |
+          filename="./fourinsight/engineroom/utils/__init__.py"
+          search_pattern="__version__ = \"0.0.1\""
+          replacement_text="__version__ = \"${{ env.GIT_TAG }}\""
+          echo replacement_text
+          echo "2"
+          echo $replacement_text
+          sed -i "s/$search_pattern/$replacement_text/" "$filename"
+
+        
+        
         
       #- name: Build package
       #  run: python -m build --sdist --wheel --outdir ./dist
