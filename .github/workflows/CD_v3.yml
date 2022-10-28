@@ -40,6 +40,8 @@ jobs:
       - name: use env var
         run: |
           echo ${{ env.VERSION_NO }}
+          s="hei"
+          echo ${s#"h"}
           
           #ver_no = ${{ env.VERSION_NO }}
           #echo ${ver_no#"v"}
