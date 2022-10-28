@@ -53,7 +53,7 @@ jobs:
           ver_no=${git_tag#"v"}
           filename="src/YellowBanana/__init__.py"
           search_pattern="__version__ = \"0.0.1\""
-          replacement_text="__version__ = \"ver_no\""
+          replacement_text="__version__ = \"$ver_no\""
           echo replacement_text
           echo "2"
           echo $replacement_text
