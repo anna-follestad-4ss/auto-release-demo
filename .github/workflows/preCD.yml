@@ -2,11 +2,11 @@ name: preCD
 
 
 on:
-  # workflow_dispatch:
+  workflow_dispatch:
   
-  push:
-    tags:
-      - 'make-*'
+  #push:
+  #  tags:
+  #3    - 'make-*'
 
 jobs:
   deploy:
