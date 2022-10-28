@@ -2,7 +2,7 @@ name: CD - triggered by preCD
 
 
 on:
-  workflow_run:
+  workflow_dispatch:
     
 
 jobs:
