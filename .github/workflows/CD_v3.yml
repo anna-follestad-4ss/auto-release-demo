@@ -5,7 +5,7 @@ on:
   workflow_run:
     workflows: [preCD]
     types:
-      -completed
+      - completed
     
 
 jobs:
