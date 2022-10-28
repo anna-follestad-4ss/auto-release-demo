@@ -42,6 +42,11 @@ jobs:
           echo ${{ env.VERSION_NO }}
           s="hei"
           echo ${s#"h"}
+          ver_no=${{ env.VERSION_NO }}
+          echo ver_no
+          echo ${ver_no#"v"}
+          echo "hei"
+          
           
           #ver_no = ${{ env.VERSION_NO }}
           #echo ${ver_no#"v"}
