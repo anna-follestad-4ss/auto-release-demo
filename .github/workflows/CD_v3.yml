@@ -37,7 +37,7 @@ jobs:
         
       - name: Replace package version number
         run: |
-          filename="./fourinsight/engineroom/utils/__init__.py"
+          filename="src/YellowBanana/__init__.py"
           search_pattern="__version__ = \"0.0.1\""
           replacement_text="__version__ = \"${{ env.GIT_TAG }}\""
           echo replacement_text
