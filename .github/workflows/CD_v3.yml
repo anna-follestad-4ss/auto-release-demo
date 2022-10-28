@@ -2,11 +2,11 @@ name: CD - triggered by preCD
 
 
 on:
-  workflow_dispatch:
-  #workflow_run:
-  #  workflows: [preCD]
-  #  types:
-  #    - completed
+  #workflow_dispatch:
+  workflow_run:
+    workflows: [preCD]
+    types:
+      - completed
     
 
 jobs:
