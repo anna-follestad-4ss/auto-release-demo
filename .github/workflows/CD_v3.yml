@@ -31,7 +31,7 @@ jobs:
       - name: Get new version number from tag
         run: |
           git fetch -a
-          echo "VERSION_NO=`echo ${(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+          echo "VERSION_NO=`echo (git describe --tags --abbrev=0)`" >> $GITHUB_ENV
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
