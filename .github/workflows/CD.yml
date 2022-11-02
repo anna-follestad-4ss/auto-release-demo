@@ -56,7 +56,7 @@ jobs:
         if: ${{ env.TAG != 'latest'}}
         run: |
           # Do nothing 
-          echo $env.TAG
+          echo $TAG
           echo "done"
           prefix="v"
           version=${env.TAG#$prefix}
