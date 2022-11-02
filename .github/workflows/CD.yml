@@ -37,14 +37,23 @@ jobs:
       #  run: |
       #    python -m pip install --upgrade pip
       #    python -m pip install build sphinx pydata_sphinx_theme
-      
+    
+    
+
+          
 
       - name: Get new version number from tag
         if: ${{ env.TAG == 'latest'}}
         run: |
-            # Get latest tag
             echo "tag is:"
             echo $TAG
+            echo "get tag from latest rlease"
+            # Get latest tag
+            git fetch -a
+            echo "TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
             
       - name: get new version number not from tag 
         if: ${{ env.TAG != 'latest'}}
