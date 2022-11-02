@@ -59,7 +59,7 @@ jobs:
           echo $TAG
           echo "done"
           prefix="v"
-          version=${env.TAG#$prefix}
+          version=${TAG#$prefix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
           
           echo "The tag i have is:"
