@@ -1,0 +1,54 @@
+name: Make Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_number:
+        description: Version number [MAJOR.MINOR.PATCH]
+        required: true
+        type: string
+
+env:
+  VERSION_NUBMER: v${{ inputs.version_number }}
+
+jobs:
+  make_release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Draft a release and generate notes
+        run: |
+          draft_ref=$(gh release create $VERSION_NUBMER --title $VERSION_NUBMER --generate-notes --draft=true)
+          echo "DRAFT_REF=${draft_ref##*/}" >> $GITHUB_ENV
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name : Append release notes to documentation
+        run: |
+          cd docs
+          sed -i "3 i \ " release_notes.rst
+          sed -i "3 i \ " release_notes.rst
+          sed -i "3 i \ " release_notes.rst
+          sed -i "3 i $(gh release view $DRAFT_REF --json body --jq '.body')" release_notes.rst
+          sed -i "3 i ------------------------------------------------" release_notes.rst
+          sed -i "3 i What is new in version $VERSION_NUMBER ($(date +'%d %B %Y'))" release_notes.rst
+          sed -i "3 i \ " release_notes.rst
+          sed -i '9s/.*/ /' release_notes.rst
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit release notes to main
+        run: |
+          git config user.email ""
+          git config user.name "github-action"
+          git add docs/release_notes.rst
+          git commit -m "release: add auto-generated release notes"
+          git push origin main
+
+      - name: Publish release!
+        run: gh release edit $DRAFT_REF --draft=false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
