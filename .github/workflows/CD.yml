@@ -1,8 +1,23 @@
 name: CD
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Choose which release tag'
+        required: true
+        type: string
+        default: 'latest'
+      testprod:
+        description: 'choose test or prod'
+        type: choice
+        options:
+        - test
+        - prod
+        required: true
+        
+
+
 
 jobs:
   deploy:
