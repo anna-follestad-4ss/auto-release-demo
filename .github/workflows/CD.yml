@@ -20,11 +20,7 @@ env:
     TAG: ${{ inputs.tag }}
     DEST: ${{ inputs.destination }}
     
-#if: ${{ env.DAY_OF_WEEK == 'Monday' }}
-#        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-#        env:
-#          First_Name: Mona
-          
+
 
 jobs:
   deploy:
@@ -44,13 +40,14 @@ jobs:
       
 
       - name: Get new version number from tag
-        if ${{ env.TAG == 'latest'}}
-        run:|
-         # Get latest tag
-         echo "tag is:"
-         echo env.TAG
-         
-        if ${{ env.TAG != 'latest'}}
+        if: ${{ env.TAG == 'latest'}}
+        run: |
+            # Get latest tag
+            echo "tag is:"
+            echo env.TAG
+            
+      - name: get new version number not from tag 
+        if: ${{ env.TAG != 'latest'}}
         run: |
           # Do nothing 
           echo "The tag i have is:"
