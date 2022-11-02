@@ -29,6 +29,8 @@ jobs:
         run: |
           gh release view $DRAFT_REF --json body --jq '.body'
           echo ""
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
           
 
