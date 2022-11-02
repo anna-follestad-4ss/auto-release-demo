@@ -4,6 +4,9 @@ Release Notes
  
  
  
+ 
+ 
+ 
 What is new in version v2.0.60 (28 October 2022)
 ------------------------------------------------
  
