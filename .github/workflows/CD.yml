@@ -56,8 +56,8 @@ jobs:
         if: ${{ env.TAG != 'latest'}}
         run: |
           # Do nothing 
-          prefix = "v"
-          version = ${env.TAG#$prefix}
+          prefix="v"
+          version=${env.TAG#$prefix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
           
           echo "The tag i have is:"
