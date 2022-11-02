@@ -20,8 +20,6 @@ env:
     TAG: ${{ inputs.tag }}
     DEST: ${{ inputs.destination }}
     
-
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -44,12 +42,9 @@ jobs:
 
           
 
-      - name: Get new version number from tag
+      - name: If "latest", get tag name 
         if: ${{ env.TAG == 'latest'}}
         run: |
-            echo "tag is:"
-            echo $TAG
-            echo "get tag from latest rlease"
             # Get latest tag
             git fetch -a
             echo "TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
@@ -57,27 +52,20 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
             
-      - name: get new version number not from tag 
+      - name: Confirm tag name
         if: ${{ env.TAG != 'latest'}}
         run: |
           # Do nothing 
-          echo "The tag i have is:"
-          echo $TAG
-          
-          
-          
-          ref="${{github.ref}}"
-          echo ref
-          echo ""
-          echo $TAG
-          echo ""
-          echo $DEST
-          
-          prefix="refs/tags/v"
-          suffix="-test"
-          version=${ref#$prefix}
-          version=${version%$suffix}
+          prefix = "v"
+          version = ${env.TAG#$prefix}
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
+          
+          echo "The tag i have is:"
+          echo $env.VERSION_NUMBER
+          echo $VERSION_NUMBER
+          
+          
+
 
       - name: Replace package version number
         run: |
