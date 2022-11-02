@@ -52,20 +52,18 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
             
-      - name: Confirm tag name
-        if: ${{ env.TAG != 'latest'}}
+      - name: Fix tag name
+        #if: ${{ env.TAG != 'latest'}}
         run: |
-          # Do nothing 
-          echo $TAG
-          echo "done"
           prefix="v"
           version=${TAG#$prefix}
-          echo $version
-          
           echo "VERSION_NUMBER=$version" >> $GITHUB_ENV
           
-          echo "The tag i have is:"
-          echo $VERSION_NUMBER
+      - name: Confirm tag name 
+        run: |
+            echo "The tag i have is:"
+            echo $VERSION_NUMBER
+
           
           
 
