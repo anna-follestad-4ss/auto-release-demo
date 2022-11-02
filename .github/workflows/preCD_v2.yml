@@ -40,7 +40,7 @@ jobs:
           sed -i "3 i \ " release_notes.rst
           sed -i "3 i \ " release_notes.rst
           sed -i "3 i \ " release_notes.rst
-          #sed -i "3 i $(gh release view $DRAFT_REF --json body --jq '.body')" release_notes.rst
+          sed -i "3 i $(gh release view $DRAFT_REF --json body --jq '.body')" release_notes.rst
           #sed -i "3 i ------------------------------------------------" release_notes.rst
           #sed -i "3 i What is new in version $VERSION_NUMBER ($(date +'%d %B %Y'))" release_notes.rst
           #sed -i "3 i \ " release_notes.rst
