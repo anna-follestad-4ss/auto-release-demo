@@ -24,6 +24,13 @@ jobs:
           echo "DRAFT_REF=${draft_ref##*/}" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: show relase notes
+        run: |
+          gh release view $DRAFT_REF --json body --jq '.body'
+          echo ""
+          
+          
 
       - name : Append release notes to documentation
         run: |
