@@ -9,7 +9,7 @@ on:
         type: string
 
 env:
-  VERSION_NUBMER: v${{ inputs.version_number }}
+  VERSION_NUMBER: v${{ inputs.version_number }}
 
 jobs:
   make_release:
@@ -20,19 +20,19 @@ jobs:
 
       - name: Draft a release and generate notes
         run: |
-          draft_ref=$(gh release create $VERSION_NUBMER --title $VERSION_NUBMER --generate-notes --draft=true)
+          draft_ref=$(gh release create $VERSION_NUMBER --title $VERSION_NUMBER --generate-notes --draft=true)
           echo "DRAFT_REF=${draft_ref##*/}" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: show relase notes
+      # Get release notes 
+      - name: Obtain notes and save to file
         run: |
+          gh release view $DRAFT_REF --json body --jq '.body' > docs/new_notes.txt
           gh release view $DRAFT_REF --json body --jq '.body'
-          echo ""
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-          
+           
 
       - name : Append release notes to documentation
         run: |
@@ -40,11 +40,11 @@ jobs:
           sed -i "3 i \ " release_notes.rst
           sed -i "3 i \ " release_notes.rst
           sed -i "3 i \ " release_notes.rst
-          sed -i "3 i $(gh release view $DRAFT_REF --json body --jq '.body')" release_notes.rst
-          #sed -i "3 i ------------------------------------------------" release_notes.rst
-          #sed -i "3 i What is new in version $VERSION_NUMBER ($(date +'%d %B %Y'))" release_notes.rst
-          #sed -i "3 i \ " release_notes.rst
-          # sed -i '9s/.*/ /' release_notes.rst
+          sed -i '3 r docs/new_notes.txt' release_notes.rst
+          sed -i "3 i ------------------------------------------------" release_notes.rst
+          sed -i "3 i What is new in version $VERSION_NUMBER ($(date +'%d %B %Y'))" release_notes.rst
+          sed -i "3 i \ " release_notes.rst
+           sed -i '9s/.*/ /' release_notes.rst
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
