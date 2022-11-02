@@ -3,12 +3,12 @@ name: CD
 on:
   workflow_dispatch:
     inputs:
-      tags:
+      tag:
         description: 'Choose which release tag'
         required: true
         type: string
         default: 'latest'
-      testprod:
+      destination:
         description: 'choose test or prod'
         type: choice
         options:
@@ -16,6 +16,9 @@ on:
         - prod
         required: true
         
+env:
+  TAG: ${{ inputs.tag }}
+  DEST: v${{ inputs.destination }}
 
 
 
@@ -25,10 +28,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.9"
+      #- name: Set up Python 3.9
+      #  uses: actions/setup-python@v2
+      #  with:
+      #    python-version: "3.9"
 
       #- name: Install dependencies
       #  run: |
@@ -40,6 +43,9 @@ jobs:
           ref="${{github.ref}}"
           echo ref
           echo ""
+          echo $TAG
+          echo ""
+          echo $DEST
           
           prefix="refs/tags/v"
           suffix="-test"
