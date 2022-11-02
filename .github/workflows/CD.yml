@@ -20,10 +20,10 @@ env:
     TAG: ${{ inputs.tag }}
     DEST: ${{ inputs.destination }}
     
-if: ${{ env.DAY_OF_WEEK == 'Monday' }}
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-        env:
-          First_Name: Mona
+#if: ${{ env.DAY_OF_WEEK == 'Monday' }}
+#        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+#        env:
+#          First_Name: Mona
           
 
 jobs:
