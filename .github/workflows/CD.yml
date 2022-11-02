@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Choose which release tag'
+        description: 'Type tag name [X.Y.Z] or use latest'
         required: true
         type: string
         default: 'latest'
       destination:
-        description: 'choose test or prod'
+        description: 'Choose destination (test or prod)'
         type: choice
         options:
         - test
