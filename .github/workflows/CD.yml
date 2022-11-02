@@ -44,7 +44,7 @@ jobs:
         run: |
             # Get latest tag
             echo "tag is:"
-            echo env.TAG
+            echo $TAG
             
       - name: get new version number not from tag 
         if: ${{ env.TAG != 'latest'}}
