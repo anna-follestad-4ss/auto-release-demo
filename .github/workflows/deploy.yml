@@ -75,12 +75,13 @@ jobs:
           add=False
           
           taglist=$(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
-          
+          goal_tag="v2.0.58"
+          no_tag=3 
+
           for i in "${!taglist[@]}";
           do
               if [[ "${taglist[$i]}" = "${goal_tag}" ]];
               then
-                  echo "found correct tag!"
                   index_end=$i
                   break
               fi
@@ -88,6 +89,14 @@ jobs:
 
           echo $index_end
           index_start=$(($index_end-$no_tag+1))
+          echo $index_start
+
+          if [[ $index_start -lt 0 ]];
+          then
+              no_tag=$(($no_tag+$index_start))
+              index_start=0
+          fi
+
           echo $index_start
           echo $no_tag
 
@@ -101,6 +110,15 @@ jobs:
           do
               echo $tag
           done 
+
+          
+          
+          
+          
+          
+          
+          
+    
 
 
         
