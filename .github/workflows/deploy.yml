@@ -65,11 +65,11 @@ jobs:
           sed -i "s/$search_pattern/$replacement_text/" "$filename"
           
 
-          
-
       - name : Inject release notes to documentation
         run: |
           cd docs
+          echo $VERSION_NUMBER
+          
 
           goal_tag=v2.1.3
           no_tag=3 
