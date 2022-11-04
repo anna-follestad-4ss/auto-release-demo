@@ -97,28 +97,28 @@ jobs:
           
           #done
           
-          echo "liste her"
+          #echo "liste her"
           
-          gh api "/repos/{owner}/{repo}/releases?per_page=3" -q .[].tag_name | sort
-          echo "liste ferdig"
+          #gh api "/repos/{owner}/{repo}/releases?per_page=3" -q .[].tag_name | sort
+          #echo "liste ferdig"
           
-          for tag in $(gh api "/repos/{owner}/{repo}/releases?per_page=3" -q .[].tag_name | sort)
-          do
-            echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" | sed -i "3r/dev/stdin" release_notes.rst
-          done
+          #for tag in $(gh api "/repos/{owner}/{repo}/releases?per_page=3" -q .[].tag_name | sort)
+          #do
+          #  echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" | sed -i "3r/dev/stdin" release_notes.rst
+          #done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      #- name: Setup Git
-      #  run: |
-      #    git config user.name 'anna-follestad-4ss'
-      #    git config user.email 'anna.fehn.follestad@4subsea.com'
-      #  
-      #- name: Push latest version to main 
-      #  run: |
-      #    git add docs/release_notes.rst
-      #    git commit -m "added latest release notes from autogen"
-      #    git push origin main
+      - name: Setup Git
+        run: |
+          git config user.name 'anna-follestad-4ss'
+          git config user.email 'anna.fehn.follestad@4subsea.com'
+        
+      - name: Push latest version to main 
+        run: |
+          git add docs/release_notes.rst
+          git commit -m "added latest release notes from autogen"
+          git push origin main
           
 
 
