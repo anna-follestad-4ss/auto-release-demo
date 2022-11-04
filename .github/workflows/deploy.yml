@@ -67,7 +67,7 @@ jobs:
       - name : Inject release notes to documentation
         run: |
           cd docs
-          for tag in $(gh api "/repos/{owner}/{repo}/releases?per_page=100" -q .[].tag_name | sort)
+          for tag in $(gh api "/repos/{owner}/{repo}/releases?per_page=3" -q .[].tag_name | sort)
           do
             echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" | sed -i "3r/dev/stdin" release_notes.rst
           done
