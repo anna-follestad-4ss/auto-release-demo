@@ -63,33 +63,35 @@ jobs:
           search_pattern="__version__ = \"0.0.1\""
           replacement_text="__version__ = \"$VERSION_NUMBER\""
           sed -i "s/$search_pattern/$replacement_text/" "$filename"
+          
+      - name: Get a list of tags
+        run: |
+          echo "TAG_LIST=`echo $(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)`" >> $GITHUB_ENV
+        env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+          
+          
 
       - name : Inject release notes to documentation
         run: |
           cd docs
+          taglist=${{ env.GIT_TAG }}
           
-          count=0
-          goal_tag=v2.1.0
-          no_tag=3
-          page=1
-          add=False
-          goal_tag=v2.0.58
+
+          goal_tag=v2.1.3
           no_tag=3 
           
-          
-          taglist=$(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
-          
-          i=0
-          for tag in $(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
+          for i in "${!taglist[@]}";
           do
-              if [[ "${tag}" = "${goal_tag}" ]];
+              if [[ "${taglist[$i]}" = "${goal_tag}" ]];
               then
                   index_end=$i
                   echo "found tag!"
                   break
               fi
-              i=$((i+1))
           done
+
 
           echo $index_end
           index_start=$(($index_end-$no_tag+1))
