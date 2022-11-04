@@ -1,6 +1,7 @@
 def _privatefunction(variable2):
     """
     This is a private function
+    This is an update
 
     Parameters
     ----------
