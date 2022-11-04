@@ -93,6 +93,8 @@ jobs:
           
           # Then loop through again and inject the correct tags:
           i=0
+          echo "Will inject the following:"
+          
           for tag in $(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
           do
             if [[ $i -ge $index_start ]] && [[ $i -le $index_end ]]
