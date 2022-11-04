@@ -33,10 +33,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
+      #- name: Set up Python 3.9
+      #  uses: actions/setup-python@v4
+      #  with:
+      #    python-version: "3.9"
 
       #- name: Install dependencies
       #  run: |
@@ -71,19 +71,27 @@ jobs:
           count=0
           target_tag=v2.0.52
           page=1
+          add=False
         
           #while [ $count -lt 4];
           #do
           
+
           for tag in $(gh api "/repos/{owner}/{repo}/releases?page=$page" -q .[].tag_name | sort)
           do
             if [[ "$tag" == "$target_tag" ]];
             then
-              echo "found correct tag!"
-              echo $tag
-              # Start adding
-              
+              add = True
             fi
+            
+            if [[ $add == "True"]];
+            then
+              #Do the addition here 
+              echo "adding notes for release"
+              echo $tag
+              echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" | sed -i "3r/dev/stdin" release_notes.rst
+            fi         
+            
           done 
   
           
