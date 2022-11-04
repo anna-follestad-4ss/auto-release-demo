@@ -84,7 +84,7 @@ jobs:
               add=True
             fi
             
-            if [[ "$add" == "True"]];
+            if [[ "$add" == "True" ]]
             then
               #Do the addition here 
               echo "adding notes for release"
