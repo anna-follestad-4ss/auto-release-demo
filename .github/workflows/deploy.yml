@@ -73,28 +73,22 @@ jobs:
           no_tag=3
           page=1
           add=False
-          
-          taglist=$(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
-          taglist2=$(gh api "/repos/{owner}/{repo}/releases?page=$page" -q .[].tag_name | sort)
-          
-          echo "her"
-          echo "${taglist[2]}"
-          echo "f"
-          echo "her"
-          echo "${taglist2[2]}"
-          echo "f"
-          
           goal_tag=v2.0.58
           no_tag=3 
-
-          for i in "${!taglist[@]}";
+          
+          
+          taglist=$(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
+          
+          i=0
+          for tag in $(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
           do
-              if [[ "${taglist[$i]}" = "${goal_tag}" ]];
+              if [[ "${tag}" = "${goal_tag}" ]];
               then
                   index_end=$i
                   echo "found tag!"
                   break
               fi
+              i=$((i+1))
           done
 
           echo $index_end
