@@ -81,7 +81,7 @@ jobs:
           do
             if [[ "$tag" == "$target_tag" ]];
             then
-              add = True
+              add=True
             fi
             
             if [[ $add == "True"]];
