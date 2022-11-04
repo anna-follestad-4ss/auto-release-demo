@@ -88,7 +88,6 @@ jobs:
 
           echo $index_end
           index_start=$(($index_end-$no_tag+1))
-          echo $index_start
 
           if [[ $index_start -lt 0 ]];
           then
@@ -98,50 +97,36 @@ jobs:
 
           echo $index_start
           echo $no_tag
-
-
-          my_tags=("${taglist[@]:$index_start:$no_tag}")
-          echo ""
-
-
-
-          for tag in ${my_tags[@]};
+          
+          # Then loop through again and inject the correct tags:
+          i=0
+          for tag in $(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
           do
-              echo $tag
-          done 
-
+            if [[ $i -ge $index_start ]] && [[ $i -le $index_end ]]
+            then
+                echo 'denne er med'
+                echo $tag
+            fi
+            i=$((i+1))
+          done
           
           
           
           
           
           
+          
+          
+          
+          
+          
+          
+      
           
     
 
 
-        
-          #while [ $count -lt 4];
-          #do
-          
 
-          for tag in $(gh api "/repos/{owner}/{repo}/releases?page=$page" -q .[].tag_name | sort)
-          do
-            if [[ "$tag" == "$target_tag" ]];
-            then
-              add=True
-            fi
-            
-            if [[ "$add" == "True" ]]
-            then
-              #Do the addition here 
-              echo "adding notes for release"
-              echo $tag
-              echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" | sed -i "3r/dev/stdin" release_notes.rst
-            fi         
-            
-          done 
-  
           
           #done
           
