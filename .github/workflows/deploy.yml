@@ -97,7 +97,8 @@ jobs:
           do
             if [[ $i -ge $index_start ]] && [[ $i -le $index_end ]]
             then
-                echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" | sed -i "3r/dev/stdin" release_notes.rst
+              echo $tag
+              echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" | sed -i "3r/dev/stdin" release_notes.rst
             fi
             i=$((i+1))
           done
