@@ -76,7 +76,7 @@ jobs:
           i=0
           for tag in $(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
           do
-            if [[ "$tag" == "$goal_tag" ]];
+            if [[ "$tag" == "v$VERSION_NUMBER" ]];
             then 
                 index_end=$i
                 echo "found tag!"
