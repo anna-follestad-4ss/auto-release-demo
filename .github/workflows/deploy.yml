@@ -73,7 +73,7 @@ jobs:
           target_tag=v2.0.52
           do
             for tag in $(gh api "/repos/{owner}/{repo}/releases?page=1" -q .[].tag_name | sort)
-            if [ $tag == target_tag]
+            if [[ "$tag" == "$target_tag" ]]
             then
               echo "found correct tag!"
               echo $tag
