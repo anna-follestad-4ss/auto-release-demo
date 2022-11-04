@@ -70,15 +70,19 @@ jobs:
           
           count=0
           target_tag=v2.0.52
-          
+          page=1
+        
           #while [ $count -lt 4];
           #do
-          for tag in $(gh api "/repos/{owner}/{repo}/releases?page=1" -q .[].tag_name | sort)
+          
+          for tag in $(gh api "/repos/{owner}/{repo}/releases?page=$page" -q .[].tag_name | sort)
           do
             if [[ "$tag" == "$target_tag" ]];
             then
               echo "found correct tag!"
               echo $tag
+              # Start adding
+              
             fi
           done 
   
