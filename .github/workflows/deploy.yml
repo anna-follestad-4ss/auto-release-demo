@@ -69,9 +69,39 @@ jobs:
           cd docs
           
           count=0
-          target_tag=v2.1.0
+          goal_tag=v2.1.0
+          no_tag=3
           page=1
           add=False
+          
+          taglist=$(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
+          
+          for i in "${!taglist[@]}";
+          do
+              if [[ "${taglist[$i]}" = "${goal_tag}" ]];
+              then
+                  index_end=$i
+                  break
+              fi
+          done
+
+          echo $index_end
+          index_start=$(($index_end-$no_tag+1))
+          echo $index_start
+          echo $no_tag
+
+
+          my_tags=("${taglist[@]:$index_start:$no_tag}")
+          echo ""
+
+
+
+          for tag in ${my_tags[@]};
+          do
+              echo $tag
+          done 
+
+
         
           #while [ $count -lt 4];
           #do
