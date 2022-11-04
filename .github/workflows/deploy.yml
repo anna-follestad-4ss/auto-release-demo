@@ -23,7 +23,7 @@ on:
         type: boolean
 
 env:
-  REPO_NAME: waveresponse
+  REPO_NAME: YellowBanana
 
 jobs:
   build:
