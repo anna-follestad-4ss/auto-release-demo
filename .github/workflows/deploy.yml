@@ -69,22 +69,21 @@ jobs:
           cd docs
           
           count=0
-          while [ $count -lt 4];
           target_tag=v2.0.52
+          
+          #while [ $count -lt 4];
+          #do
+          for tag in $(gh api "/repos/{owner}/{repo}/releases?page=1" -q .[].tag_name | sort)
           do
-            for tag in $(gh api "/repos/{owner}/{repo}/releases?page=1" -q .[].tag_name | sort)
-            if [[ "$tag" == "$target_tag" ]]
+            if [[ "$tag" == "$target_tag" ]];
             then
               echo "found correct tag!"
               echo $tag
             fi
+          done 
+  
           
-            
-            
-          
-          
-          
-          done
+          #done
           
           echo "liste her"
           
