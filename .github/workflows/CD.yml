@@ -78,12 +78,12 @@ jobs:
           password: ${{ secrets.PYPI_TEST_API_KEY }}
           repository_url: https://test.pypi.org/legacy/#
 
-      - name: Publish package to PyPi
-        if: ${{ env.DEST == 'prod'}}
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_PROD_API_KEY }}
+      #- name: Publish package to PyPi
+      #  if: ${{ env.DEST == 'prod'}}
+      #  uses: pypa/gh-action-pypi-publish@release/v1
+      #  with:
+      #    user: __token__
+      #    password: ${{ secrets.PYPI_PROD_API_KEY }}
           
       - name: Upload documentation to TEST blob storage
         if: ${{ env.DEST == 'test'}}
