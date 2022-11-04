@@ -70,7 +70,7 @@ jobs:
           cd docs
           echo $VERSION_NUMBER
     
-          no_tag=3 
+          no_tag=1
           i=0
           for tag in $(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
           do
