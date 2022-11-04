@@ -75,7 +75,7 @@ jobs:
           add=False
           
           taglist=$(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name | sort)
-          goal_tag="v2.0.58"
+          goal_tag=v2.0.58
           no_tag=3 
 
           for i in "${!taglist[@]}";
