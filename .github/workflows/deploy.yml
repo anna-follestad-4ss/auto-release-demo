@@ -76,7 +76,7 @@ jobs:
       - name : Inject release notes to documentation
         run: |
           cd docs
-          taglist=${{ env.GIT_TAG }}
+          taglist=${{ env.TAG_LIST }}
           
 
           goal_tag=v2.1.3
