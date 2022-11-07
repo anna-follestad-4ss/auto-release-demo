@@ -89,18 +89,83 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Setup Git
-        run: |
-          git config user.name 'anna-follestad-4ss'
-          git config user.email 'anna.fehn.follestad@4subsea.com'
-        
-      - name: Push latest version to main 
-        run: |
-          git add docs/release_notes.rst
-          git commit -m "added latest release notes from autogen"
-          git push origin main
-          
+      - name: Build package
+        run: python -m build --sdist --wheel --outdir ./dist
 
+      - name: Build documentation
+        run:  |
+          pip install .
+          sphinx-build -b html ./docs ./build/html
+      - name: Stash build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build_artifacts
+          path: |
+            ./dist/*.whl
+            ./build/html
+          retention-days: 1
+
+  deploy-prod:
+    if: ${{ inputs.pipeline == 'production' }}
+    runs-on: self-hosted
+    needs: build
+    env:
+      VERSION_NUMBER: ${{ needs.build.outputs.version_number }}
+
+    steps:
+      - name: Clean up artifacts directory
+        shell: pwsh
+        run: Get-ChildItem . | Remove-Item -Recurse -Force
+
+      - name: Fetch build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build_artifacts
+
+      - name: Push wheel to //fil-ask-004/python/pypi
+        shell: pwsh
+        run: Copy-Item -Path ".\dist\*.whl" -Destination "\\fil-ask-004\python\pypi\" -Recurse -Force
+
+      - name: Push doc to //fil-ask-004/python/doc
+        shell: pwsh
+        run: |
+          Copy-Item -Path ".\build\html" -Destination "\\fil-ask-004\python\doc\$Env:REPO_NAME\v$Env:VERSION_NUMBER" -Recurse -Force
+      - name: Push doc to //fil-ask-004/python/doc as latest
+        if: ${{ inputs.doc_latest }}
+        shell: pwsh
+        run: |
+          Copy-Item -Path ".\build\html" -Destination "\\fil-ask-004\python\doc\$Env:REPO_NAME\latest" -Recurse -Force
+          
+  deploy-test:
+    if: ${{ inputs.pipeline == 'test' }}
+    runs-on: self-hosted
+    needs: build
+    env:
+      VERSION_NUMBER: ${{ needs.build.outputs.version_number }}
+
+    steps:
+      - name: Clean up artifacts directory
+        shell: pwsh
+        run: Get-ChildItem . | Remove-Item -Recurse -Force
+
+      - name: Fetch build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build_artifacts
+
+      - name: Push wheel to //fil-ask-004/python/pypi-test
+        shell: pwsh
+        run: Copy-Item -Path ".\dist\*.whl" -Destination "\\fil-ask-004\python\pypi-test\" -Recurse -Force
+
+      - name: Push doc to //fil-ask-004/python/doc-test
+        shell: pwsh
+        run: |
+          Copy-Item -Path ".\build\html" -Destination "\\fil-ask-004\python\doc-test\$Env:REPO_NAME\v$Env:VERSION_NUMBER" -Recurse -Force
+      - name: Push doc to //fil-ask-004/python/doc-test as latest
+        if: ${{ inputs.doc_latest }}
+        shell: pwsh
+        run: |
+          Copy-Item -Path ".\build\html" -Destination "\\fil-ask-004\python\doc-test\$Env:REPO_NAME\latest" -Recurse -Force
 
 
     
