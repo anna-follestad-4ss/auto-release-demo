@@ -1,0 +1,108 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_number:
+        description: Release version number [MAJOR.MINOR.PATCH] to deploy. Use "$latest" to automatically choose the latest release.
+        required: true
+        type: string
+        default: "$latest"
+      pipeline:
+        description: Choose deploy pipeline.
+        required: true
+        default: production
+        type: choice
+        options:
+        - production
+        - test
+      doc_latest:
+        description: Deploy documentation as latest?
+        default: true
+        required: true
+        type: boolean
+
+env:
+  REPO_NAME: YellowBanana
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version_number: ${{ steps.version_number.outputs.VERSION_NUMBER }}
+    steps:
+      - uses: actions/checkout@v3
+
+      #- name: Set up Python 3.9
+      #  uses: actions/setup-python@v4
+      #  with:
+      #    python-version: "3.9"
+
+      #- name: Install dependencies
+      #  run: |
+      #    python -m pip install --upgrade pip
+      #    python -m pip install build sphinx pydata_sphinx_theme
+
+      - name: Get new version number from input
+        id: version_number
+        run: |
+          if [ "${{ inputs.version_number }}" = "$latest" ]
+          then
+            version="$(gh release view --json tagName --jq .tagName)"
+            version=${version#v}
+          else
+            version="${{ inputs.version_number }}"
+          fi
+          echo "VERSION_NUMBER=$version" | tee $GITHUB_ENV $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Replace package version number
+        run: |
+          filename="./src/$REPO_NAME/__init__.py"
+          search_pattern="__version__ = \"0.0.1\""
+          replacement_text="__version__ = \"$VERSION_NUMBER\""
+          sed -i "s/$search_pattern/$replacement_text/" "$filename"
+          
+
+      - name : Inject release notes to documentation
+        run: |
+          cd docs
+          echo $VERSION_NUMBER
+    
+          n_tag=3
+          i=0
+          for tag in $(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name )
+          do
+            if [[ "$tag" == "v$VERSION_NUMBER" ]];
+            then 
+              inject=True
+            fi
+            if [[ "$inject" == "True" ]] && [[ $i -le $n_tag]];
+            then
+              echo $tag
+              i=$((i+1))
+            fi
+          done
+          
+      #echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" | sed -i "3r/dev/stdin" release_notes.rst
+
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Git
+        run: |
+          git config user.name 'anna-follestad-4ss'
+          git config user.email 'anna.fehn.follestad@4subsea.com'
+        
+      - name: Push latest version to main 
+        run: |
+          git add docs/release_notes.rst
+          git commit -m "added latest release notes from autogen"
+          git push origin main
+          
+
+
+
+    
