@@ -78,7 +78,7 @@ jobs:
             then 
               inject=True
             fi
-            if [[ "$inject" == "True" ]] && [[ $i -le $n_tag]];
+            if [[ "$inject" == "True" ]] && [[ $i -le $n_tag ]];
             then
               echo $tag
               i=$((i+1))
