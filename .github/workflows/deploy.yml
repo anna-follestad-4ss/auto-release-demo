@@ -67,7 +67,7 @@ jobs:
 
       - name : Inject release notes to documentation
         run: |
-          cd docs
+
           echo $VERSION_NUMBER
     
           n_tag=3
@@ -82,10 +82,10 @@ jobs:
             then
               echo $tag
               i=$((i+1))
-              echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" >> release_notes.rst
+              echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" >> docs/release_notes.rst
             fi
           done
-          echo -e "Some note about incomplete list" >> release_notes.rst        
+          echo -e "Some note about incomplete list" >> docs/release_notes.rst        
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
