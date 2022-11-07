@@ -72,6 +72,8 @@ jobs:
     
           n_tag=5
           i=0
+          
+          # Note: may have to use paging if the number of releases gets very high
           for tag in $(gh api "/repos/anna-follestad-4ss/auto-release-demo/releases" --paginate -q .[].tag_name)
           do
             if [[ "$tag" == "v$VERSION_NUMBER" ]];
