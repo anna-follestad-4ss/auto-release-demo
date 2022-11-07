@@ -89,6 +89,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
+      - name: Setup Git
+        run: |
+          git config user.name 'anna-follestad-4ss'
+          git config user.email 'anna.fehn.follestad@4subsea.com'
+        
+      - name: Push latest version to main 
+        run: |
+          git add docs/release_notes.rst
+          git commit -m "added latest release notes from autogen"
+          git push origin main
+          
+          
       - name: Build package
         run: python -m build --sdist --wheel --outdir ./dist
 
