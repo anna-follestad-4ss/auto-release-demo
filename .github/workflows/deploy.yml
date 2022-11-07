@@ -80,7 +80,6 @@ jobs:
             fi
             if [[ "$inject" == "True" ]] && [[ $i -le $n_tag ]];
             then
-              echo $tag
               i=$((i+1))
               echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" >> docs/release_notes.rst
             fi
