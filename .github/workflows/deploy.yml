@@ -85,7 +85,7 @@ jobs:
               echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" >> docs/release_notes.rst
             fi
           done
-          echo -e "Some note about incomplete list" >> docs/release_notes.rst        
+          echo -e "*Note: this list includes only the most recent releases. For full release history, see www.github.com/fourinsight-xyz*" >> docs/release_notes.rst        
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
