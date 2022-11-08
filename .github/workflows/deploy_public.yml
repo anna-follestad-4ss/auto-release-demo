@@ -33,15 +33,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
+      #- name: Set up Python 3.9
+      #  uses: actions/setup-python@v4
+      #  with:
+      #    python-version: "3.9"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install build sphinx pydata_sphinx_theme
+      #- name: Install dependencies
+      #  run: |
+      #    python -m pip install --upgrade pip
+      #    python -m pip install build sphinx pydata_sphinx_theme
 
       - name: Get new version number from input
         id: version_number
@@ -92,22 +92,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
           
-      - name: Build package
-        run: python -m build --sdist --wheel --outdir ./dist
+      #- name: Build package
+      #  run: python -m build --sdist --wheel --outdir ./dist
 
-      - name: Build documentation
-        run:  |
-          pip install .
-          sphinx-build -b html ./docs ./build/html
+      #- name: Build documentation
+      #  run:  |
+      #    pip install .
+      #    sphinx-build -b html ./docs ./build/html
           
-      - name: Stash build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build_artifacts
-          path: |
-            ./dist/*.whl
-            ./build/html
-          retention-days: 1
+      #- name: Stash build artifacts
+      #  uses: actions/upload-artifact@v3
+      #  with:
+      #    name: build_artifacts
+      #    path: |
+      #      ./dist/*.whl
+      #      ./build/html
+      #    retention-days: 1
       
   deploy-test:
     if: ${{ inputs.pipeline == 'test' }}
@@ -137,7 +137,7 @@ jobs:
 
        - name: test pattern
          run: |
-          echo "$REPO_NAME/python/docs/latest"
+          echo $REPO_NAME
           
           
        #- name: Upload documentation to TEST blob storage
