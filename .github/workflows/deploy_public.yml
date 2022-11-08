@@ -186,6 +186,7 @@ jobs:
              az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$REPO_NAME/python/docs/$VERSION_NUMBER"
           
        - name: Upload documentation to PROD blob storage as latest 
+         if: ${{ inputs.doc_latest }}
          uses: azure/CLI@v1
          env:
            AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTPROD_DOC_BLOB_CONNSTR }}
