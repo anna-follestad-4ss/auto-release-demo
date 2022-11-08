@@ -115,8 +115,7 @@ jobs:
     needs: build
     env:
       VERSION_NUMBER: ${{ needs.build.outputs.version_number }}
-      REPO_NAME: ${{ needs.build.outputs.repo_name }}
-     
+      
     steps:  
        #- name: Clean up artifacts directory
        #  shell: pwsh
@@ -137,8 +136,11 @@ jobs:
 
        - name: test pattern
          run: |
+          echo 1
           echo $REPO_NAME
+          echo 2
           echo $env:REPO_NAME
+          echo 3
           echo $REPO_NAME
 
   
