@@ -38,10 +38,10 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install build sphinx pydata_sphinx_theme
+      #- name: Install dependencies
+      #  run: |
+      #    python -m pip install --upgrade pip
+      #    python -m pip install build sphinx pydata_sphinx_theme
 
       - name: Get new version number from input
         id: version_number
@@ -92,8 +92,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
           
-      - name: Build package
-        run: python -m build --sdist --wheel --outdir ./dist
+      #- name: Build package
+      #  run: python -m build --sdist --wheel --outdir ./dist
 
       - name: Build documentation
         run:  |
