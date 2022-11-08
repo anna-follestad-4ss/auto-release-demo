@@ -121,6 +121,7 @@ jobs:
        - name: Test variables
          run: |
           echo $env:REPO_NAME 
+          echo $VERSION_NUMBER
           
           
        - name: Clean up artifacts directory
