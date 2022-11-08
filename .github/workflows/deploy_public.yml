@@ -99,6 +99,7 @@ jobs:
         run:  |
           pip install .
           sphinx-build -b html ./docs ./build/html
+          
       - name: Stash build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -114,8 +115,14 @@ jobs:
     needs: build
     env:
       VERSION_NUMBER: ${{ needs.build.outputs.version_number }}
+      REPO_NAME: ${{ needs.build.outputs.repo_name }}
      
     steps:
+       - name: Test variables
+         run: |
+          echo $env:REPO_NAME 
+          
+          
        - name: Clean up artifacts directory
          shell: pwsh
          run: Get-ChildItem . | Remove-Item -Recurse -Force
@@ -141,7 +148,7 @@ jobs:
           inlineScript: |
             az storage blob delete-batch -s "\$web" --pattern "$Env:REPO_NAME/python/docs/latest/*"
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$Env:REPO_NAME/python/docs/latest"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$Env:REPO_NAME/python/docs/$Env:VERSION_NUMBER"
+            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$Env:REPO_NAME/python/docs/$VERSION_NUMBER"
     
     
     
