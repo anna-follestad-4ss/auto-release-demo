@@ -138,6 +138,10 @@ jobs:
        - name: test pattern
          run: |
           echo $REPO_NAME
+          echo $env:REPO_NAME
+          echo $REPO_NAME
+
+  
           
           
        #- name: Upload documentation to TEST blob storage
