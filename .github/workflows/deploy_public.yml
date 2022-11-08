@@ -118,14 +118,14 @@ jobs:
       REPO_NAME: ${{ needs.build.outputs.repo_name }}
      
     steps:  
-       - name: Clean up artifacts directory
-         shell: pwsh
-         run: Get-ChildItem . | Remove-Item -Recurse -Force
+       #- name: Clean up artifacts directory
+       #  shell: pwsh
+       #  run: Get-ChildItem . | Remove-Item -Recurse -Force
 
-       - name: Fetch build artifacts
-         uses: actions/download-artifact@v3
-         with:
-           name: build_artifacts
+       #- name: Fetch build artifacts
+       #  uses: actions/download-artifact@v3
+       #  with:
+       #    name: build_artifacts
         
        #- name: Publish package to TestPyPi
        #  uses: pypa/gh-action-pypi-publish@release/v1
