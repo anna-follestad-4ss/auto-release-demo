@@ -141,7 +141,7 @@ jobs:
           echo 2
           echo $env:REPO_NAME
           echo 3
-          echo $REPO_NAME
+          echo "$REPO_NAME/python/docs/$VERSION_NUMBER"
 
   
           
