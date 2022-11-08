@@ -127,30 +127,38 @@ jobs:
          with:
            name: build_artifacts
         
-       - name: Publish package to TestPyPi
-         uses: pypa/gh-action-pypi-publish@release/v1
-         with:
-           user: __token__
-           password: ${{ secrets.PYPI_TEST_API_KEY }}
-           repository_url: https://test.pypi.org/legacy/
+       #- name: Publish package to TestPyPi
+       #  uses: pypa/gh-action-pypi-publish@release/v1
+       #  with:
+       #    user: __token__
+       #    password: ${{ secrets.PYPI_TEST_API_KEY }}
+       #    repository_url: https://test.pypi.org/legacy/
 
-       - name: Upload documentation to TEST blob storage
-         uses: azure/CLI@v1
-         env:
-            AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTTEST_DOC_BLOB_CONNSTR }}
-         with:
-          inlineScript: |
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$REPO_NAME/python/docs/$VERSION_NUMBER"
+
+       - name: test pattern
+         run: |
+          echo "$REPO_NAME/python/docs/latest"
+          
+          
+       #- name: Upload documentation to TEST blob storage
+       #  uses: azure/CLI@v1
+       #  env:
+       #     AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTTEST_DOC_BLOB_CONNSTR }}
+       #  with:
+       #   inlineScript: |
+       #     az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$REPO_NAME/python/docs/$VERSION_NUMBER"
             
-       - name: Upload documentation to TEST blob storage
-         if: ${{ inputs.doc_latest }}
-         uses: azure/CLI@v1
-         env:
-            AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTTEST_DOC_BLOB_CONNSTR }}
-         with:
-          inlineScript: |
-            az storage blob delete-batch -s "\$web" --pattern "$REPO_NAME/python/docs/latest/*"
-            az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$REPO_NAME/python/docs/latest"
+
+          
+       #- name: Upload documentation to TEST blob storage
+       #  if: ${{ inputs.doc_latest }}
+       #  uses: azure/CLI@v1
+       #  env:
+       #     AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTTEST_DOC_BLOB_CONNSTR }}
+       #  with:
+       #   inlineScript: |
+       #     az storage blob delete-batch -s "\$web" --pattern "$REPO_NAME/python/docs/latest/*"
+       #     az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$REPO_NAME/python/docs/latest"
             
             
     
