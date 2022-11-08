@@ -95,19 +95,19 @@ jobs:
       #- name: Build package
       #  run: python -m build --sdist --wheel --outdir ./dist
 
-      - name: Build documentation
-        run:  |
-          pip install .
-          sphinx-build -b html ./docs ./build/html
+      #- name: Build documentation
+      #  run:  |
+      #    pip install .
+      #    sphinx-build -b html ./docs ./build/html
           
-      - name: Stash build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build_artifacts
-          path: |
-            ./dist/*.whl
-            ./build/html
-          retention-days: 1
+      #- name: Stash build artifacts
+      #  uses: actions/upload-artifact@v3
+      #  with:
+      #    name: build_artifacts
+      #    path: |
+      #      ./dist/*.whl
+      #      ./build/html
+      #    retention-days: 1
       
   deploy-test:
     if: ${{ inputs.pipeline == 'test' }}
