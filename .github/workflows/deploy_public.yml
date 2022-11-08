@@ -132,19 +132,6 @@ jobs:
            user: __token__
            password: ${{ secrets.PYPI_TEST_API_KEY }}
            repository_url: https://test.pypi.org/legacy/
-
-
-       - name: test pattern
-         run: |
-          echo 1
-          echo $REPO_NAME
-          echo 2
-          echo $env:REPO_NAME
-          echo 3
-          echo "$REPO_NAME/python/docs/$VERSION_NUMBER"
-
-  
-          
           
        - name: Upload documentation to TEST blob storage
          uses: azure/CLI@v1
@@ -153,10 +140,8 @@ jobs:
          with:
           inlineScript: |
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$REPO_NAME/python/docs/$VERSION_NUMBER"
-            
-
           
-       - name: Upload documentation to TEST blob storage
+       - name: Upload documentation to TEST blob storage as latest
          if: ${{ inputs.doc_latest }}
          uses: azure/CLI@v1
          env:
@@ -165,26 +150,54 @@ jobs:
           inlineScript: |
             az storage blob delete-batch -s "\$web" --pattern "$REPO_NAME/python/docs/latest/*"
             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$REPO_NAME/python/docs/latest"
-            
-            
-    
-    
-    
-    
-    
-      #- name: Upload documentation to PROD blob storage
-      #  if: ${{ inputs.pipeline == 'production' }}
-      #  uses: azure/CLI@v1
-      #  env:
-      #    AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTPROD_DOC_BLOB_CONNSTR }}
+
+  deploy-prod:
+    if: ${{ inputs.pipeline == 'production' }}
+    runs-on: ubuntu-latest
+    needs: build
+    env:
+      VERSION_NUMBER: ${{ needs.build.outputs.version_number }}
+      
+    steps:  
+       - name: Clean up artifacts directory
+         shell: pwsh
+         run: Get-ChildItem . | Remove-Item -Recurse -Force
+
+       - name: Fetch build artifacts
+         uses: actions/download-artifact@v3
+         with:
+           name: build_artifacts
+        
+      #- name: Publish package to PyPi
+      #  uses: pypa/gh-action-pypi-publish@release/v1
       #  with:
-      #    inlineScript: |
-      #      az storage blob delete-batch -s "\$web" --pattern "$Env:REPO_NAME/python/docs/latest/*"
-      #      az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "yellowbanana/python/docs/latest"
-            
-            
-            
-        # Missing public package to PyPI!! 
+      #    user: __token__
+      #    password: ${{ secrets.PYPI_PROD_API_KEY }}
+       # Missing public package to PyPI!! 
         # Bc I am missing the API key
+    
+    
+       - name: Upload documentation to PROD blob storage
+         uses: azure/CLI@v1
+         env:
+           AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTPROD_DOC_BLOB_CONNSTR }}
+         with:
+           inlineScript: |
+             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$REPO_NAME/python/docs/$VERSION_NUMBER"
+          
+       - name: Upload documentation to PROD blob storage as latest 
+         uses: azure/CLI@v1
+         env:
+           AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.FOURINSIGHTPROD_DOC_BLOB_CONNSTR }}
+         with:
+           inlineScript: |
+             az storage blob delete-batch -s "\$web" --pattern "$REPO_NAME/python/docs/latest/*"
+             az storage blob upload-batch -d "\$web" -s ./build/html --destination-path "$REPO_NAME/python/docs/latest"
+            
+            
+            
+            
+            
+       
          
             
