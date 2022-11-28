@@ -70,7 +70,7 @@ jobs:
 
           echo $VERSION_NUMBER
     
-          n_tag=5
+          n_tag=10
           i=0
           
           # Note: may have to use paging if the number of releases gets very high
