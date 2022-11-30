@@ -83,7 +83,7 @@ jobs:
             if [[ "$inject" == "True" ]] && [[ $i -le $n_tag ]];
             then
               i=$((i+1))
-              echo -e "$(gh release view $tag --json name --jq name --template '{{ .name }}\n------------------------------)" >> docs/release_notes.rst
+              echo -e "$(gh release view $tag --json name --jq name --template '{{ .name }}\n------------------------------')" >> docs/release_notes.rst
             
               echo -e "$(gh release view $tag --json body --template '{{ .body }}\n')" | sed 's/<!-[^~]*->//g' | sed G >> docs/release_notes.rst
             
