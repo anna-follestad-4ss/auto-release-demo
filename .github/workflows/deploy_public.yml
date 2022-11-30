@@ -85,8 +85,7 @@ jobs:
               i=$((i+1))
               # echo -e "$(gh release view $tag --json name --jq .name )" >> docs/release_notes.rst
             
-              echo -e "$(gh release view $tag --json name  --template '{{.name}}\n------------------------------')" >> docs/release_notes.rst
-            
+              echo -e "$(gh release view $tag --json name --template '{{.name}}\n------------------------------')" >> docs/release_notes.rst
               echo -e "$(gh release view $tag --json body --template '{{.body}}\n')" | sed 's/<!-[^~]*->//g' | sed G >> docs/release_notes.rst
             
               #echo -e "$(gh release view $tag --json name,body --template '{{ .name }}\n------------------------------\n\n{{ .body }}\n\n')" | sed 's/<!-[^~]*->//g' | sed G >> docs/release_notes.rst
