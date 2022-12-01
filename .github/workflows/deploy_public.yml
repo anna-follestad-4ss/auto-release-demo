@@ -99,6 +99,7 @@ jobs:
           
       - name: Build documentation
         run: |
+          pip install . 
           sphinx-build -b html ./docs ./build/html
       
      
