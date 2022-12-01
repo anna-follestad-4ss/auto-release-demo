@@ -30,7 +30,7 @@ author = "4Subsea"
 github_repo = 'http://github.com/4Subsea/auto-release-demo/'
 
 # The full version, including alpha/beta/rc tags
-version = metadata.version("auto-release-demo")
+version = metadata.version("YellowBanana")
 #version = "0.0.1"
 release = version
 
