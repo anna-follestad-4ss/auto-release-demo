@@ -109,7 +109,7 @@ jobs:
         
       - name: Push docs to main 
         run: |
-          git add .
+          git add *
           git add docs/release_notes.rst
           git commit -m "added latest release notes from deploy_public"
           git push origin main
