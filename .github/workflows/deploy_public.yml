@@ -96,9 +96,12 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
           
-          
+      - name: Build documentation
+        run: |
+          sphinx-build -b html ./docs ./build/html
+      
+     
       - name: Setup Git
         run: |
           git config user.name 'anna-follestad-4ss'
@@ -106,6 +109,7 @@ jobs:
         
       - name: Push docs to main 
         run: |
+          git add .
           git add docs/release_notes.rst
           git commit -m "added latest release notes from deploy_public"
           git push origin main
