@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.abspath("../src/"))
 # -- Project information -----------------------------------------------------
 _TEMPLATE_VERSION = "2.0.0"
 
-project = "4insight docs template"
+project = "YellowBanana"
 copyright = f"{date.today().year}, 4Subsea"
 author = "4Subsea"
 github_repo = 'http://github.com/4Subsea/auto-release-demo/'
