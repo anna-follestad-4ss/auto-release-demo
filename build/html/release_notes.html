@@ -1,0 +1,655 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Release Notes &#8212; 4insight docs template 0.0.1 documentation</title>
+
+
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes';</script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Support" href="support.html" />
+    <link rel="prev" title="Class1" href="api_ref/YellowBanana.Class1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  
+
+
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="light">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+      
+
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+   
+
+
+<a class="navbar-brand logo" href="http://docs.4insight.io">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="_static/4insight-logo.svg" class="logo__image only-light" alt="Logo image">
+    <img src="_static/4insight-logo.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+    <p class="title logo__title">DOCUMENTATION</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class=" navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="user_guide/index.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="api_ref/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Release Notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="support.html">
+                        Support
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="other/index.html">
+                        Other
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/4subsea/fourinsight-xyz" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/fourinsight-xyz" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fas fa-box"></i></span>
+            <label class="sr-only">PyPI</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+
+</div>
+  </nav>
+  
+<ul class="breadcrumb">
+ <li class="nav-item nav-item-last"><a href = "http://docs.4insight.io"><font-color=black>Home</font-color></a></li>
+ <li class="nav-item nav-item-last"><a href = "http://docs.4insight.io/sdks">SDK</a></li>
+ <li class="nav-item nav-item-last"><a href = "index.html">4insight docs template</a></li>
+<li class="minklasse"><a href="#", class="current_relbar">Release Notes</a></li>
+
+
+
+</ul>
+
+
+
+  <div class="bd-container">
+  
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="user_guide/index.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="api_ref/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Release Notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="support.html">
+                        Support
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="other/index.html">
+                        Other
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/4subsea/fourinsight-xyz" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/fourinsight-xyz" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fas fa-box"></i></span>
+            <label class="sr-only">PyPI</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+	  
+
+      <main class="bd-main">
+        
+		
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="release-notes">
+<h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this heading">#</a></h1>
+<section id="v2-1-8-08-november-2022">
+<h2>v2.1.8 (08 November 2022)<a class="headerlink" href="#v2-1-8-08-november-2022" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5...v2.1.8">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5…v2.1.8</a></p>
+</section>
+<section id="v2-1-7-08-november-2022">
+<h2>v2.1.7 (08 November 2022)<a class="headerlink" href="#v2-1-7-08-november-2022" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5...v2.1.7">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5…v2.1.7</a></p>
+</section>
+<section id="v2-1-6-08-november-2022">
+<h2>v2.1.6 (08 November 2022)<a class="headerlink" href="#v2-1-6-08-november-2022" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4...v2.1.6">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4…v2.1.6</a></p>
+</section>
+<section id="v2-1-5-08-november-2022">
+<h2>v2.1.5 (08 November 2022)<a class="headerlink" href="#v2-1-5-08-november-2022" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4...v2.1.5">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4…v2.1.5</a></p>
+</section>
+<section id="v2-1-4-08-november-2022">
+<h2>v2.1.4 (08 November 2022)<a class="headerlink" href="#v2-1-4-08-november-2022" title="Permalink to this heading">#</a></h2>
+<p>## What’s Changed</p>
+<p>### Features 🎉</p>
+<ul class="simple">
+<li><p>Awesome new feature by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/18">anna-follestad-4ss/auto-release-demo#18</a></p></li>
+<li><p>Included a new chapter in the user guide  by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/20">anna-follestad-4ss/auto-release-demo#20</a></p></li>
+</ul>
+<p>### Bug Fixes</p>
+<ul class="simple">
+<li><p>Bug fix here  by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/19">anna-follestad-4ss/auto-release-demo#19</a></p></li>
+</ul>
+<p>### Other Changes</p>
+<ul class="simple">
+<li><p>Pull request title  by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/17">anna-follestad-4ss/auto-release-demo#17</a></p></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.3...v2.1.4">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.3…v2.1.4</a></p>
+</section>
+<section id="v2-1-3">
+<h2>v2.1.3<a class="headerlink" href="#v2-1-3" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.1...v2.1.3">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.1…v2.1.3</a></p>
+</section>
+<section id="v2-1-1">
+<h2>v2.1.1<a class="headerlink" href="#v2-1-1" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.0...v2.1.1">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.0…v2.1.1</a></p>
+</section>
+<section id="v2-1-0">
+<h2>v2.1.0<a class="headerlink" href="#v2-1-0" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.60...v2.1.0">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.60…v2.1.0</a></p>
+</section>
+<section id="v2-0-60-test">
+<h2>v2.0.60-test<a class="headerlink" href="#v2-0-60-test" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/make-v2.0.58...v2.0.60-test">https://github.com/anna-follestad-4ss/auto-release-demo/compare/make-v2.0.58…v2.0.60-test</a></p>
+</section>
+<section id="v2-0-60">
+<h2>v2.0.60<a class="headerlink" href="#v2-0-60" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.59...v2.0.60">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.59…v2.0.60</a></p>
+</section>
+<section id="v2-0-59">
+<h2>v2.0.59<a class="headerlink" href="#v2-0-59" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.58...v2.0.59">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.58…v2.0.59</a></p>
+<p><em>Note: this list includes only the most recent releases. For full release history, see www.github.com/fourinsight-xyz</em>
+v2.1.8 (08 November 2022)
+——————————</p>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5...v2.1.8">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5…v2.1.8</a></p>
+</section>
+<section id="id1">
+<h2>v2.1.7 (08 November 2022)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5...v2.1.7">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5…v2.1.7</a></p>
+</section>
+<section id="id2">
+<h2>v2.1.6 (08 November 2022)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4...v2.1.6">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4…v2.1.6</a></p>
+</section>
+<section id="id3">
+<h2>v2.1.5 (08 November 2022)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4...v2.1.5">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4…v2.1.5</a></p>
+</section>
+<section id="id4">
+<h2>v2.1.4 (08 November 2022)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>## What’s Changed</p>
+<p>### Features 🎉</p>
+<ul class="simple">
+<li><p>Awesome new feature by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/18">anna-follestad-4ss/auto-release-demo#18</a></p></li>
+<li><p>Included a new chapter in the user guide  by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/20">anna-follestad-4ss/auto-release-demo#20</a></p></li>
+</ul>
+<p>### Bug Fixes</p>
+<ul class="simple">
+<li><p>Bug fix here  by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/19">anna-follestad-4ss/auto-release-demo#19</a></p></li>
+</ul>
+<p>### Other Changes</p>
+<ul class="simple">
+<li><p>Pull request title  by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/17">anna-follestad-4ss/auto-release-demo#17</a></p></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.3...v2.1.4">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.3…v2.1.4</a></p>
+</section>
+<section id="id5">
+<h2>v2.1.3<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.1...v2.1.3">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.1…v2.1.3</a></p>
+</section>
+<section id="id6">
+<h2>v2.1.1<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.0...v2.1.1">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.0…v2.1.1</a></p>
+</section>
+<section id="id7">
+<h2>v2.1.0<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.60...v2.1.0">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.60…v2.1.0</a></p>
+</section>
+<section id="id8">
+<h2>v2.0.60-test<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/make-v2.0.58...v2.0.60-test">https://github.com/anna-follestad-4ss/auto-release-demo/compare/make-v2.0.58…v2.0.60-test</a></p>
+</section>
+<section id="id9">
+<h2>v2.0.60<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.59...v2.0.60">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.59…v2.0.60</a></p>
+</section>
+<section id="id10">
+<h2>v2.0.59<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.58...v2.0.59">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.58…v2.0.59</a></p>
+<p><em>Note: this list includes only the most recent releases. For full release history, see www.github.com/fourinsight-xyz</em>
+v2.1.8 (08 November 2022)
+——————————</p>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5...v2.1.8">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5…v2.1.8</a></p>
+</section>
+<section id="id11">
+<h2>v2.1.7 (08 November 2022)<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5...v2.1.7">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.5…v2.1.7</a></p>
+</section>
+<section id="id12">
+<h2>v2.1.6 (08 November 2022)<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4...v2.1.6">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4…v2.1.6</a></p>
+</section>
+<section id="id13">
+<h2>v2.1.5 (08 November 2022)<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4...v2.1.5">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.4…v2.1.5</a></p>
+</section>
+<section id="id14">
+<h2>v2.1.4 (08 November 2022)<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
+<p>## What’s Changed</p>
+<p>### Features 🎉</p>
+<ul class="simple">
+<li><p>Awesome new feature by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/18">anna-follestad-4ss/auto-release-demo#18</a></p></li>
+<li><p>Included a new chapter in the user guide  by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/20">anna-follestad-4ss/auto-release-demo#20</a></p></li>
+</ul>
+<p>### Bug Fixes</p>
+<ul class="simple">
+<li><p>Bug fix here  by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/19">anna-follestad-4ss/auto-release-demo#19</a></p></li>
+</ul>
+<p>### Other Changes</p>
+<ul class="simple">
+<li><p>Pull request title  by &#64;anna-follestad-4ss in <a class="github reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/pull/17">anna-follestad-4ss/auto-release-demo#17</a></p></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.3...v2.1.4">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.3…v2.1.4</a></p>
+</section>
+<section id="id15">
+<h2>v2.1.3<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.1...v2.1.3">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.1…v2.1.3</a></p>
+</section>
+<section id="id16">
+<h2>v2.1.1<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.0...v2.1.1">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.1.0…v2.1.1</a></p>
+</section>
+<section id="id17">
+<h2>v2.1.0<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.60...v2.1.0">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.60…v2.1.0</a></p>
+</section>
+<section id="id18">
+<h2>v2.0.60-test<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/make-v2.0.58...v2.0.60-test">https://github.com/anna-follestad-4ss/auto-release-demo/compare/make-v2.0.58…v2.0.60-test</a></p>
+</section>
+<section id="id19">
+<h2>v2.0.60<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.59...v2.0.60">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.59…v2.0.60</a></p>
+</section>
+<section id="id20">
+<h2>v2.0.59<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
+<p><strong>Full Changelog</strong>: <a class="reference external" href="https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.58...v2.0.59">https://github.com/anna-follestad-4ss/auto-release-demo/compare/v2.0.58…v2.0.59</a></p>
+<p><em>Note: this list includes only the most recent releases. For full release history, see www.github.com/fourinsight-xyz</em></p>
+</section>
+</section>
+
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="api_ref/YellowBanana.Class1.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Class1</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="support.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Support</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, 4Subsea.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>
